@@ -61,7 +61,7 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
                 <DropdownMenuSeparator className="sm:hidden" />
 
                 <nav className="sm:hidden">
-                    <NavItems initialStocks={initialStocks} />
+                    <NavItems initialStocks={initialStocks} userEmail={user.email} />
                 </nav>
             </DropdownMenuContent>
         </DropdownMenu>

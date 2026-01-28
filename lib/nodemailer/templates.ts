@@ -1,3 +1,81 @@
+export const PRICE_ALERT_EMAIL_TEMPLATE = (
+    symbol: string,
+    company: string,
+    currentPrice: number,
+    targetPrice: number,
+    alertType: 'upper' | 'lower'
+) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Alert: ${symbol}</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background-color: #0a0a0a; }
+        .container { max-width: 600px; margin: 40px auto; background: #1a1a1a; border-radius: 12px; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); padding: 30px; text-align: center; }
+        .header h1 { color: #0a0a0a; margin: 0; font-size: 24px; font-weight: 700; }
+        .content { padding: 40px 30px; }
+        .alert-box { background: #27272a; border-left: 4px solid #eab308; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .stock-info { margin: 20px 0; }
+        .stock-symbol { font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+        .company-name { font-size: 18px; color: #9ca3af; margin-bottom: 20px; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #27272a; }
+        .price-row:last-child { border-bottom: none; }
+        .price-label { color: #9ca3af; font-size: 14px; }
+        .price-value { color: #ffffff; font-size: 20px; font-weight: 600; }
+        .alert-triggered { background: #eab308; color: #0a0a0a; padding: 12px 20px; border-radius: 6px; text-align: center; font-weight: 600; margin: 20px 0; }
+        .cta-button { display: inline-block; background: #eab308; color: #0a0a0a; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 20px 0; }
+        .footer { padding: 30px; text-align: center; color: #6b7280; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔔 Price Alert Triggered</h1>
+        </div>
+        <div class="content">
+            <div class="stock-info">
+                <div class="stock-symbol">${symbol}</div>
+                <div class="company-name">${company}</div>
+            </div>
+            
+            <div class="alert-box">
+                <div class="price-row">
+                    <span class="price-label">Current Price</span>
+                    <span class="price-value">$${currentPrice.toFixed(2)}</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Target Price</span>
+                    <span class="price-value">$${targetPrice.toFixed(2)}</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Alert Condition</span>
+                    <span class="price-value">${alertType === 'upper' ? 'Above' : 'Below'} Target</span>
+                </div>
+            </div>
+            
+            <div class="alert-triggered">
+                ${symbol} has ${alertType === 'upper' ? 'risen above' : 'fallen below'} your target price of $${targetPrice.toFixed(2)}
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="https://quantpulse.com/symbol/${symbol}" class="cta-button">View ${symbol} Details</a>
+            </div>
+            
+            <p style="color: #9ca3af; margin-top: 30px; font-size: 14px;">
+                You're receiving this alert because you set up a price notification for ${symbol} in your QuantPulse watchlist.
+            </p>
+        </div>
+        <div class="footer">
+            <p>© 2024 QuantPulse Market Intelligence. All rights reserved.</p>
+            <p>Manage your alerts in your <a href="https://quantpulse.com/watchlist" style="color: #eab308;">watchlist</a></p>
+        </div>
+    </div>
+</body>
+</html>
+`;
+
 export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +83,7 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Welcome to Signalist</title>
+    <title>Welcome to QuantPulse</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -104,7 +182,7 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Dashboard Preview Image -->
                     <tr>
                         <td align="center" class="dashboard-preview" style="padding: 40px 40px 0px 40px;">
-                            <img src="https://ik.imagekit.io/a6fkjou7d/dashboard-preview.png?updatedAt=1756378548102" alt="Signalist Dashboard Preview" width="100%" style="max-width: 520px; width: 100%; height: auto; border-radius: 12px; border: 1px solid #30333A;">
+                            <img src="https://ik.imagekit.io/a6fkjou7d/dashboard-preview.png?updatedAt=1756378548102" alt="QuantPulse Dashboard Preview" width="100%" style="max-width: 520px; width: 100%; height: auto; border-radius: 12px; border: 1px solid #30333A;">
                         </td>
                     </tr>
                     
@@ -150,10 +228,10 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             
                             <!-- Footer Text -->
                             <p class="mobile-text dark-text-muted" style="margin: 40px 0 0 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important; text-align: center;">
-                               Signalist HQ, 200 Market Street, San Francisco, CA 94105<br>
+                               QuantPulse HQ, 200 Market Street, San Francisco, CA 94105<br>
                                 <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
-                                <a href="https://stock-market-dev.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a><br>
-                                © 2025 Signalist
+                                <a href="https://stock-market-dev.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit QuantPulse</a><br>
+                                © 2025 QuantPulse
                             </p>
                         </td>
                     </tr>

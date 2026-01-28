@@ -59,6 +59,7 @@ declare global {
         renderAs?: 'button' | 'text';
         label?: string;
         initialStocks: StockWithWatchlistStatus[];
+        userEmail?: string;
         open?: boolean;
         setOpen?: (open: boolean) => void;
         buttonLabel?: string;
@@ -113,12 +114,24 @@ declare global {
         isInWatchlist: boolean;
         showTrashIcon?: boolean;
         type?: 'button' | 'icon';
+        userEmail?: string;
         onWatchlistChange?: (symbol: string, isAdded: boolean) => void;
     };
 
     type QuoteData = {
         c?: number;
         dp?: number;
+    };
+
+    type FinnhubQuote = {
+        c: number;  // Current price
+        d: number;  // Change
+        dp: number; // Percent change
+        h: number;  // High price of the day
+        l: number;  // Low price of the day
+        o: number;  // Open price of the day
+        pc: number; // Previous close price
+        t: number;  // Timestamp
     };
 
     type ProfileData = {
@@ -200,6 +213,16 @@ declare global {
         image?: string;
         category?: string;
         related?: string;
+    };
+
+    type WatchlistStockDetails = {
+        symbol: string;
+        company: string;
+        price: number;
+        change: number;
+        changePercent: number;
+        marketCap: number;
+        peRatio: number;
     };
 
     type Alert = {

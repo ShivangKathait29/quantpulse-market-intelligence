@@ -1,5 +1,7 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useTransition } from "react";
+import { toggleWatchlist } from "@/lib/actions/watchlist.actions";
+import { useRouter } from "next/navigation";
 // Minimal WatchlistButton implementation to satisfy page requirements.
 // This component focuses on UI contract only. It toggles local state and
 // calls onWatchlistChange if provided. Styling hooks match globals.css.
@@ -7,24 +9,47 @@ import React, { useEffect, useMemo, useState } from "react";
 const WatchlistButton = ({
                              symbol,
                              company,
+                             userEmail,
                              isInWatchlist,
                              showTrashIcon = false,
                              type = "button",
                              onWatchlistChange,
                          }: WatchlistButtonProps) => {
     const [added, setAdded] = useState<boolean>(!!isInWatchlist);
+    const [isPending, startTransition] = useTransition();
+    const router = useRouter();
 
-
+    useEffect(() => {
+        setAdded(!!isInWatchlist);
+    }, [isInWatchlist]);
 
     const label = useMemo(() => {
         if (type === "icon") return added ? "" : "";
         return added ? "Remove from Watchlist" : "Add to Watchlist";
     }, [added, type]);
 
-    const handleClick = () => {
+    const handleClick = async () => {
+        if (!userEmail) {
+            router.push('/sign-in');
+            return;
+        }
+
         const next = !added;
+        
+        // Optimistic UI update
         setAdded(next);
-        onWatchlistChange?.(symbol, next);
+
+        startTransition(async () => {
+            try {
+                await toggleWatchlist(userEmail, symbol, company, next);
+                onWatchlistChange?.(symbol, next);
+                router.refresh();
+            } catch (error) {
+                console.error("Failed to update watchlist:", error);
+                // Revert on error
+                setAdded(!next);
+            }
+        });
     };
 
     if (type === "icon") {
@@ -41,7 +66,7 @@ const WatchlistButton = ({
                     fill={added ? "#FACC15" : "none"}
                     stroke="#FACC15"
                     strokeWidth="1.5"
-                    className="watchlist-star"
+                    className="w-5 h-5"
                 >
                     <path
                         strokeLinecap="round"
