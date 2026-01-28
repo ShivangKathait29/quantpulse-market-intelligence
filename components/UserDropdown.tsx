@@ -31,7 +31,11 @@ const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
     const router = useRouter()
 
     const handleSignOut = async () => {
-        await signOut()
+        const result = await signOut()
+            if (result?.success === false) {
+            console.error('Sign out failed:', result.error)
+            // Optionally show a toast/notification to the user
+            }
         router.push('/sign-in')
     }
 

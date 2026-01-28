@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 import {Loader2,  TrendingUp} from "lucide-react";
 import Link from "next/link";
 import {searchStocks} from "@/lib/actions/finnhub.actions";
-import {useDebounce} from "@/hooks/useDebounce";
+import {useDebouncedValue} from "@/hooks/useDebouncedValue";
 
 export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
@@ -48,17 +48,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   //   debouncedSearch();
   // }, [searchTerm]);
 
-  // In a new hook or inline:
-  function useDebouncedValue<T>(value: T, delay: number): T {
-    const [debouncedValue, setDebouncedValue] = useState(value);
 
-    useEffect(() => {
-      const timer = setTimeout(() => setDebouncedValue(value), delay);
-      return () => clearTimeout(timer);
-    }, [value, delay]);
-
-    return debouncedValue;
-  }
 
 // Then in SearchCommand:
   const debouncedSearchTerm = useDebouncedValue(searchTerm, 300);
