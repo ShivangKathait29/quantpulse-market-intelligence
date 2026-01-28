@@ -42,11 +42,39 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     }
   }
 
-  const debouncedSearch = useDebounce(handleSearch, 300);
+  // const debouncedSearch = useDebounce(handleSearch, 300);
+  //
+  // useEffect(() => {
+  //   debouncedSearch();
+  // }, [searchTerm]);
+
+  // In a new hook or inline:
+  function useDebouncedValue<T>(value: T, delay: number): T {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+      const timer = setTimeout(() => setDebouncedValue(value), delay);
+      return () => clearTimeout(timer);
+    }, [value, delay]);
+
+    return debouncedValue;
+  }
+
+// Then in SearchCommand:
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 300);
 
   useEffect(() => {
-    debouncedSearch();
-  }, [searchTerm]);
+    if (!debouncedSearchTerm.trim()) {
+      setStocks(initialStocks);
+      return;
+    }
+
+    setLoading(true);
+    searchStocks(debouncedSearchTerm.trim())
+        .then(setStocks)
+        .catch(() => setStocks([]))
+        .finally(() => setLoading(false));
+  }, [debouncedSearchTerm, initialStocks]);
 
   const handleSelectStock = () => {
     setOpen(false);

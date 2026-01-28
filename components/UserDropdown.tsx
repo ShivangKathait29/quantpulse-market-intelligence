@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
+import { signOut } from '@/lib/actions/auth.actions'
 
 import {
     DropdownMenu,
@@ -29,7 +30,8 @@ type UserDropdownProps = {
 const UserDropdown = ({ user, initialStocks }: UserDropdownProps) => {
     const router = useRouter()
 
-    const handleSignOut = () => {
+    const handleSignOut = async () => {
+        await signOut()
         router.push('/sign-in')
     }
 

@@ -159,8 +159,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
           const name = r.description || upper;
           const exchangeFromDisplay = (r.displaySymbol as string | undefined) || undefined;
           const exchangeFromProfile = (r as any).__exchange as string | undefined;
-          const exchange = exchangeFromDisplay || exchangeFromProfile || 'US';
-          const type = r.type || 'Stock';
+          const exchange = exchangeFromProfile || 'US';          const type = r.type || 'Stock';
           const item: StockWithWatchlistStatus = {
             symbol: upper,
             name,
