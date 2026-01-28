@@ -22,6 +22,21 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
 
 export { fetchJSON };
 
+export async function getQuote(symbol: string): Promise<FinnhubQuote | null> {
+  try {
+    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    if (!token) {
+      throw new Error('FINNHUB API key is not configured');
+    }
+    const url = `${FINNHUB_BASE_URL}/quote?symbol=${encodeURIComponent(symbol.toUpperCase())}&token=${token}`;
+    const quote = await fetchJSON<FinnhubQuote>(url, 60); // Cache for 60 seconds
+    return quote;
+  } catch (err) {
+    console.error('getQuote error:', err);
+    return null;
+  }
+}
+
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
   try {
     const range = getDateRange(5);
