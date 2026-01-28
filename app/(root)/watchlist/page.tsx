@@ -14,7 +14,7 @@ export default async function WatchlistPage() {
             <h1 className="text-3xl font-bold mb-6 text-gray-100">My Watchlist</h1>
             {symbols.length === 0 ? (
                 <div className="watchlist-empty-container">
-                    <p className="watchlist-empty text-gray-500">Your watchlist is empty. Start adding stocks from the search page!</p>
+                    <p className="watchlist-empty text-gray-500">Your watchlist is empty. Press ⌘K to search and add stocks!</p>
                 </div>
             ) : (
                 <div className="watchlist-container">

@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 import {Loader2,  TrendingUp} from "lucide-react";
 import Link from "next/link";
 import {searchStocks} from "@/lib/actions/finnhub.actions";
-import {useDebounce} from "@/hooks/useDebounce";
+import {useDebouncedValue} from "@/hooks/useDebouncedValue";
 
 export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
@@ -42,11 +42,29 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     }
   }
 
-  const debouncedSearch = useDebounce(handleSearch, 300);
+  // const debouncedSearch = useDebounce(handleSearch, 300);
+  //
+  // useEffect(() => {
+  //   debouncedSearch();
+  // }, [searchTerm]);
+
+
+
+// Then in SearchCommand:
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 300);
 
   useEffect(() => {
-    debouncedSearch();
-  }, [searchTerm]);
+    if (!debouncedSearchTerm.trim()) {
+      setStocks(initialStocks);
+      return;
+    }
+
+    setLoading(true);
+    searchStocks(debouncedSearchTerm.trim())
+        .then(setStocks)
+        .catch(() => setStocks([]))
+        .finally(() => setLoading(false));
+  }, [debouncedSearchTerm, initialStocks]);
 
   const handleSelectStock = () => {
     setOpen(false);
@@ -86,7 +104,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
                   {displayStocks?.map((stock, i) => (
                       <li key={stock.symbol} className="search-item">
                         <Link
-                            href={`/stocks/${stock.symbol}`}
+                            href={`/symbol/${stock.symbol}`}
                             onClick={handleSelectStock}
                             className="search-item-link"
                         >
