@@ -42,3 +42,14 @@ export const sendNewsSummaryEmail = async (
 
     await transporter.sendMail(mailOptions);
 };
+
+export const sendEmail = async ({ to, subject, html }: { to: string; subject: string; html: string }): Promise<void> => {
+    const mailOptions = {
+        from: `"QuantPulse Alerts" <test@localhost>`,
+        to,
+        subject,
+        html,
+    };
+
+    await transporter.sendMail(mailOptions);
+};
