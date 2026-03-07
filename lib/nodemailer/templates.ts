@@ -2,36 +2,6 @@
 // CWE: None
 // Description: ML classifier detected potential sql injection (confidence: 0.88).
 // TODO: Apply a proper fix for this vulnerability.
-                                    <td align="center">
-                                        <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📈 Price Above Reached
-                                        </h1>
-                                        <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
-                                            {{timestamp}}
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    
-                    <!-- Main Content -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 0 40px 40px 40px;">
-                            
-                            <!-- Stock Info -->
-                            <div class="dark-bg" style="text-align: center; padding: 30px 20px; background-color: #212328; border-radius: 8px; margin-bottom: 10px;">
-                                <h2 class="dark-text" style="margin: 0 0 10px 0; font-size: 28px; font-weight: 700; color: #ffffff;">
-                                    {{symbol}}
-                                </h2>
-                                <p class="dark-text-muted" style="margin: 0 0 20px 0; font-size: 16px; color: #6b7280;">
-                                    {{company}}
-                                </p>
-                                
-                                <!-- Current Price -->
-                                <div style="margin-bottom: 20px;">
-                                    <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Price
                                     </p>
                                     <p class="mobile-price" style="margin: 0; font-size: 36px; font-weight: 700; color: #10b981;">
                                         {{currentPrice}}
@@ -95,3 +65,34 @@
     </table>
 </body>
 </html>`;
+
+export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Price Alert: {{symbol}} Hit Lower Target</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style type="text/css">
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            .email-container {
+                background-color: #141414 !important;
+                border: 1px solid #30333A !important;
+            }
+            .dark-bg {
+                background-color: #050505 !important;
+            }
+            .dark-text {
+                color: #ffffff !important;
