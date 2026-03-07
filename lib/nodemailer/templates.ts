@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
+// Description: ML classifier detected potential command injection (confidence: 0.74).
 // TODO: Apply a proper fix for this vulnerability.
-                            
-                            <!-- Alert Details -->
-                            <div class="dark-info-box" style="background-color: #212328; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                                <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    Alert Details
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
                                     <strong>Target Price:</strong> {{targetPrice}}
@@ -96,3 +91,8 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .dark-text-muted {
                 color: #6b7280 !important;
+            }
+            .dark-border {
+                border-color: #30333A !important;
+            }
+            .dark-info-box {
