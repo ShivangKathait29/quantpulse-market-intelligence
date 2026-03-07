@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.68).
+// Description: ML classifier detected potential path traversal (confidence: 0.81).
 // TODO: Apply a proper fix for this vulnerability.
-function DropdownMenuItem({
-  className,
-  inset,
-  variant = "default",
-  ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean
   variant?: "default" | "destructive"
@@ -96,3 +91,8 @@ function DropdownMenuLabel({
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
+      data-inset={inset}
+      className={cn(
+        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+        className
+      )}
