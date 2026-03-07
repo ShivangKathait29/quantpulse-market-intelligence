@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.59).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.67).
 // TODO: Apply a proper fix for this vulnerability.
-            }
-            .mobile-header-padding {
-                padding: 15px 15px 8px 15px !important;
-            }
-        }
-    </style>
-</head>
-<body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
-        <tr>
             <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="email-container" style="max-width: 600px; background-color: #141414; border-radius: 8px; border: 1px solid #30333A;">
                     
@@ -95,4 +85,14 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .dark-text-secondary {
                 color: #9ca3af !important;
+            }
+            .dark-text-muted {
+                color: #6b7280 !important;
+            }
+            .dark-border {
+                border-color: #30333A !important;
+            }
+            .dark-info-box {
+                background-color: #1f2937 !important;
+                border: 1px solid #374151 !important;
             }
