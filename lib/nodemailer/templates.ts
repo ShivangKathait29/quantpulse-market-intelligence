@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.67).
+// Description: ML classifier detected potential command injection (confidence: 0.65).
 // TODO: Apply a proper fix for this vulnerability.
-        /* Dark mode styles */
-        @media (prefers-color-scheme: dark) {
-            .email-container {
-                background-color: #141414 !important;
-                border: 1px solid #30333A !important;
-            }
-            .dark-bg {
-                background-color: #050505 !important;
-            }
-            .dark-text {
-                color: #ffffff !important;
-            }
-            .dark-text-secondary {
-                color: #9ca3af !important;
-            }
             .dark-text-muted {
                 color: #6b7280 !important;
             }
@@ -96,3 +81,18 @@
                                 {{date}}
                             </p>
                             
+                            <!-- News Summary -->
+                            {{newsContent}}
+                            
+                            <!-- Footer Text -->
+                            <div style="text-align: center; margin: 40px 0 0 0;">
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    You're receiving this because you subscribed to Signalist news updates.
+                                </p>
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
+                                    <a href="https://signalist.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
+                                </p>
+                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    © 2025 Signalist
+                                </p>
