@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.94).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.96).
 // TODO: Apply a proper fix for this vulnerability.
-                padding: 20px 10px !important;
-            }
-            .dashboard-preview {
-                padding: 0 15px 30px 15px !important;
-            }
         }
         @media only screen and (max-width: 480px) {
             .mobile-title {
@@ -96,3 +91,8 @@
         </tr>
     </table>
 </body>
+</html>`;
+
+export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
