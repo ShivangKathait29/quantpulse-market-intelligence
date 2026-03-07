@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.63).
+// Description: ML classifier detected potential command injection (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
-    locale: 'en',
-    save_image: false,
-    style: 1,
-    symbol: symbol.toUpperCase(),
-    theme: 'dark',
     timezone: 'Etc/UTC',
     backgroundColor: '#141414',
     gridColor: '#141414',
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'UBER',
     'ZOOM',
     'SPOT',
+    'SQ',
+    'SHOP',
+    'ROKU',
+
+    // Newer Tech Companies
