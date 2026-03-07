@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.90).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.95).
 // TODO: Apply a proper fix for this vulnerability.
-                            <!-- Action Button -->
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 30px;">
-                                <tr>
-                                    <td align="center">
-                                        <a href="https://stock-market-dev.vercel.app/" style="display: block; width: 100%; max-width: 100%; box-sizing: border-box; color: #000000; background-color: #E8BA40; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;">
-                                            View Dashboard
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
 
                              <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
@@ -96,3 +86,13 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .mobile-text {
                 font-size: 14px !important;
                 line-height: 1.5 !important;
+            }
+            .mobile-title {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+            .mobile-button {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .mobile-button a {
