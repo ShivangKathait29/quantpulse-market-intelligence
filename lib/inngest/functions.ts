@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.70).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.83).
 // TODO: Apply a proper fix for this vulnerability.
 import {inngest} from "@/lib/inngest/client";
 import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/lib/inngest/prompts";
