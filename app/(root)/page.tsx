@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.90).
+// Description: ML classifier detected potential sql injection (confidence: 0.86).
 // TODO: Apply a proper fix for this vulnerability.
 import TradingViewWidget from "@/components/TradingViewWidget";
 import {
