@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.70).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.94).
 // TODO: Apply a proper fix for this vulnerability.
-                                    {{symbol}} dropped below your target price. This might be a good time to buy.
-                                </p>
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 30px;">
-                                <tr>
-                                    <td align="center">
-                                        <a href="https://stock-market-dev.vercel.app/" style="display: block; width: 100%; max-width: 100%; box-sizing: border-box; background-color: #E8BA40; color: #000000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;">
-                                            View Dashboard
                                         </a>
                                     </td>
                                 </tr>
@@ -96,3 +86,13 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .mobile-header-padding {
                 padding: 24px 24px 12px 24px !important;
+            }
+            .mobile-text {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+            .mobile-title {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+            .mobile-outer-padding {
