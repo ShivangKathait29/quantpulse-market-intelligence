@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.76).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.66).
 // TODO: Apply a proper fix for this vulnerability.
-            symbols: [
-                { name: 'NASDAQ:AMZN', displayName: 'Amazon' },
-                { name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
-                { name: 'NYSE:T', displayName: 'At&t Inc' },
-                { name: 'NYSE:WMT', displayName: 'Walmart' },
                 { name: 'NYSE:V', displayName: 'Visa' },
             ],
         },
@@ -96,3 +91,8 @@ export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
 
 export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
+    colorTheme: 'dark',
+    isTransparent: 'true',
+    locale: 'en',
+    width: '100%',
+    height: 464,
