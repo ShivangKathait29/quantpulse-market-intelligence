@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.86).
+// Description: ML classifier detected potential sql injection (confidence: 0.83).
 // TODO: Apply a proper fix for this vulnerability.
-        }
-        @media only screen and (max-width: 480px) {
-            .mobile-title {
-                font-size: 22px !important;
-            }
             .mobile-padding {
                 padding: 15px !important;
             }
@@ -96,3 +91,8 @@
                                     {{symbol}} has reached your target price! This could be a good time to review your position and consider taking profits or adjusting your strategy.
                                 </p>
                             </div>
+                            
+                            <!-- Action Button -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td align="center">
