@@ -1,32 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.65).
+// Description: ML classifier detected potential sql injection (confidence: 0.80).
 // TODO: Apply a proper fix for this vulnerability.
-            .dark-text-muted {
-                color: #6b7280 !important;
-            }
-            .dark-border {
-                border-color: #30333A !important;
-            }
-            .dark-cta {
-                background-color: #1f2937 !important;
-                border: 1px solid #374151 !important;
-            }
-        }
-        
-        @media only screen and (max-width: 600px) {
-            .email-container {
-                width: 100% !important;
-                margin: 0 !important;
-            }
-            .mobile-padding {
-                padding: 24px !important;
-            }
-            .mobile-header-padding {
-                padding: 24px 24px 12px 24px !important;
-            }
-            .mobile-text {
-                font-size: 14px !important;
                 line-height: 1.5 !important;
             }
             .mobile-title {
@@ -96,3 +71,28 @@
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Signalist
                                 </p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>`;
+
+export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Price Alert: {{symbol}} Hit Upper Target</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
