@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.67).
+// Description: ML classifier detected potential sql injection (confidence: 0.96).
 // TODO: Apply a proper fix for this vulnerability.
-            <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="email-container" style="max-width: 600px; background-color: #141414; border-radius: 8px; border: 1px solid #30333A;">
-                    
-                    <!-- Header with Logo -->
-                    <tr>
-                        <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
-                        </td>
-                    </tr>
-                    
                     <!-- Main Content -->
                     <tr>
                         <td class="mobile-padding" style="padding: 40px 40px 40px 40px;">
@@ -95,4 +85,14 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .dark-info-box {
                 background-color: #1f2937 !important;
                 border: 1px solid #374151 !important;
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            .mobile-padding {
+                padding: 24px !important;
             }
