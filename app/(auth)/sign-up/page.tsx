@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.88).
+// Description: ML classifier detected potential sql injection (confidence: 0.90).
 // TODO: Apply a proper fix for this vulnerability.
 'use client';
 
