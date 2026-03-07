@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.97).
+// Description: ML classifier detected potential command injection (confidence: 0.73).
 // TODO: Apply a proper fix for this vulnerability.
 import React from 'react'
 import {Label} from "@/components/ui/label";
