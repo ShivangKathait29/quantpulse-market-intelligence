@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.74).
+// Description: ML classifier detected potential path traversal (confidence: 0.76).
 // TODO: Apply a proper fix for this vulnerability.
 declare global {
     type SignInFormData = {
