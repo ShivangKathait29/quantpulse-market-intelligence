@@ -1,32 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.94).
+// Description: ML classifier detected potential path traversal (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                             <!-- Footer Text -->
-                            <div style="text-align: center; margin: 40px 0 0 0;">
-                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Signalist news updates.
-                                </p>
-                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
-                                    <a href="https://signalist.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
-                                </p>
-                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    © 2025 Signalist
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </table>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>`;
 
@@ -96,3 +71,28 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 line-height: 1.3 !important;
             }
             .mobile-outer-padding {
+                padding: 20px 10px !important;
+            }
+            .mobile-volume {
+                font-size: 28px !important;
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .mobile-title {
+                font-size: 22px !important;
+            }
+            .mobile-padding {
+                padding: 15px !important;
+            }
+            .mobile-header-padding {
+                padding: 15px 15px 8px 15px !important;
+            }
+            .mobile-volume {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
+        <tr>
