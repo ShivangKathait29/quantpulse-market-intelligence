@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.72).
+// Description: ML classifier detected potential command injection (confidence: 0.88).
 // TODO: Apply a proper fix for this vulnerability.
 import * as React from "react"
 
