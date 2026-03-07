@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.61).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
-                    </tr>
-                    
-                    <!-- Main Content -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 40px 40px 40px 40px;">
                             
                             <!-- Welcome Back Heading -->
                             <h1 class="mobile-title dark-text" style="margin: 0 0 15px 0; font-size: 28px; font-weight: 600; background: linear-gradient(135deg, #FDD458 0%, #E8BA40 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #FDD458; line-height: 1.2;">
