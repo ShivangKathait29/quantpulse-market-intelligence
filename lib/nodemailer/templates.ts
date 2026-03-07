@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.75).
+// Description: ML classifier detected potential command injection (confidence: 0.69).
 // TODO: Apply a proper fix for this vulnerability.
-                                Welcome aboard {{name}}
-                            </h1>
-                            
-                            <!-- Intro Text -->
-                            {{intro}}  
-                            
-                            <!-- Feature List Label -->
-                            <p class="mobile-text dark-text-secondary" style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.6; color: #CCDADC; font-weight: 600;">
-                                Here's what you can do right now:
-                            </p>
                             
                             <!-- Feature List -->
                             <ul class="mobile-text dark-text-secondary" style="margin: 0 0 30px 0; padding-left: 20px; font-size: 16px; line-height: 1.6; color: #CCDADC;">
@@ -96,3 +86,13 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .dark-cta {
                 background-color: #1f2937 !important;
                 border: 1px solid #374151 !important;
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            .mobile-padding {
+                padding: 24px !important;
