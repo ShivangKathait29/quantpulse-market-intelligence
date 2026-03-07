@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.85).
+// Description: ML classifier detected potential sql injection (confidence: 0.74).
 // TODO: Apply a proper fix for this vulnerability.
 declare global {
     type SignInFormData = {
