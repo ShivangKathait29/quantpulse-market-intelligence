@@ -1,17 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.92).
+// Description: ML classifier detected potential sql injection (confidence: 0.83).
 // TODO: Apply a proper fix for this vulnerability.
-                                    <p style="margin: 0; font-size: 18px; font-weight: 600; color: {{priceColor}};">
-                                        {{currentPrice}} ({{changeDirection}}{{changePercent}}%)
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Alert Details -->
-                            <div class="dark-info-box" style="background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                                <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    Volume Spike Details
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
                                     <strong>Trigger:</strong> {{alertMessage}}
@@ -96,3 +86,13 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
     <style type="text/css">
         /* Dark mode styles */
         @media (prefers-color-scheme: dark) {
+            .email-container {
+                background-color: #141414 !important;
+                border: 1px solid #30333A !important;
+            }
+            .dark-bg {
+                background-color: #050505 !important;
+            }
+            .dark-text {
+                color: #ffffff !important;
+            }
