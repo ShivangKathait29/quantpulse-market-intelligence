@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.70).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.63).
 // TODO: Apply a proper fix for this vulnerability.
-    withdateranges: false,
-    compareSymbols: [],
-    studies: [],
-    width: '100%',
-    height: 600,
-});
-
-export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
-    symbol: symbol.toUpperCase(),
-    colorTheme: 'dark',
-    isTransparent: 'true',
-    locale: 'en',
-    width: '100%',
-    height: 400,
-    interval: '1h',
     largeChartUrl: '',
 });
 
@@ -96,3 +81,18 @@ export const POPULAR_STOCK_SYMBOLS = [
     'JD',
     'PDD',
     'TME',
+    'BILI',
+    'DIDI',
+    'GRAB',
+    'SE',
+];
+
+export const NO_MARKET_NEWS =
+    '<p class="mobile-text" style="margin:0 0 20px 0;font-size:16px;line-height:1.6;color:#4b5563;">No market news available today. Please check back tomorrow.</p>';
+
+export const WATCHLIST_TABLE_HEADER = [
+    'Company',
+    'Symbol',
+    'Price',
+    'Change',
+    'Market Cap',
