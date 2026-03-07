@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.70).
+// Description: ML classifier detected potential sql injection (confidence: 0.83).
 // TODO: Apply a proper fix for this vulnerability.
-                text-align: center !important;
-            }
-            .mobile-button a {
-                width: calc(100% - 32px) !important;
-                display: block !important;
                 text-align: center !important;
             }
             .mobile-outer-padding {
@@ -96,3 +91,8 @@
                     </tr>
                     
                 </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>`;
