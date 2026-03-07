@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.88).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
-
-NEWS ARTICLE STRUCTURE:
-For each individual news item within a section, use this structure:
-1. Article container with visual styling and icon
-2. Article title as a subheading
-3. Key takeaways in bullet points (2-3 actionable insights)
-4. "What this means" section for context
-5. "Read more" link to the original article
-6. Visual divider between articles
-
 ARTICLE CONTAINER:
 Wrap each article in a clean, simple container:
 <div class="dark-info-box" style="background-color: #212328; padding: 24px; margin: 20px 0; border-radius: 8px;">
@@ -95,3 +85,14 @@ Stock Market Had Mixed Results Today
 <div style="background-color: #141414; border: 1px solid #374151; padding: 15px; border-radius: 6px; margin: 16px 0;">
 <p class="dark-text-secondary" style="margin: 0; font-size: 14px; color: #CCDADC; line-height: 1.4;">💡 <strong style="color: #FDD458;">Bottom Line:</strong> If you own tech stocks, today was good for you. If you're thinking about investing, tech companies might be a smart choice right now.</p>
 </div>
+
+<div style="margin: 20px 0 0 0;">
+<a href="https://example.com/article1" style="color: #FDD458; text-decoration: none; font-weight: 500; font-size: 14px;" target="_blank" rel="noopener noreferrer">Read Full Story →</a>
+</div>
+</div>
+
+<div style="border-top: 1px solid #374151; margin: 32px 0 24px 0;"></div>
+
+<h3 class="mobile-news-title dark-text" style="margin: 30px 0 15px 0; font-size: 20px; font-weight: 600; color: #f8f9fa; line-height: 1.3;">📈 Top Gainers</h3>
+
+<div class="dark-info-box" style="background-color: #212328; padding: 24px; margin: 20px 0; border-radius: 8px;">
