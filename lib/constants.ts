@@ -1,37 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.70).
+// Description: ML classifier detected potential command injection (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
-                { s: 'NASDAQ:GOOGL', d: 'Alphabet' },
-                { s: 'NASDAQ:MSFT', d: 'Microsoft' },
-                { s: 'NASDAQ:FB', d: 'Meta Platforms' },
-                { s: 'NYSE:ORCL', d: 'Oracle Corp' },
-                { s: 'NASDAQ:INTC', d: 'Intel Corp' },
-            ],
-        },
-        {
-            title: 'Services',
-            symbols: [
-                { s: 'NASDAQ:AMZN', d: 'Amazon' },
-                { s: 'NYSE:BABA', d: 'Alibaba Group Hldg Ltd' },
-                { s: 'NYSE:T', d: 'At&t Inc' },
-                { s: 'NYSE:WMT', d: 'Walmart' },
-                { s: 'NYSE:V', d: 'Visa' },
-            ],
-        },
-    ],
-    support_host: 'https://www.tradingview.com', // TradingView host
-    backgroundColor: '#141414', // background color
-    width: '100%', // full width
-    height: 600, // height in px
-    showSymbolLogo: true, // show logo next to symbols
-    showChart: true, // display mini chart
-};
-
-export const HEATMAP_WIDGET_CONFIG = {
-    dataSource: 'SPX500',
-    blockSize: 'market_cap_basic',
-    blockColor: 'change',
     grouping: 'sector',
     isTransparent: true,
     locale: 'en',
@@ -96,3 +66,33 @@ export const MARKET_DATA_WIDGET_CONFIG = {
                 { name: 'NASDAQ:AMZN', displayName: 'Amazon' },
                 { name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
                 { name: 'NYSE:T', displayName: 'At&t Inc' },
+                { name: 'NYSE:WMT', displayName: 'Walmart' },
+                { name: 'NYSE:V', displayName: 'Visa' },
+            ],
+        },
+    ],
+};
+
+export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
+    symbol: symbol.toUpperCase(),
+    colorTheme: 'dark',
+    isTransparent: true,
+    locale: 'en',
+    width: '100%',
+    height: 170,
+});
+
+export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
+    allow_symbol_change: false,
+    calendar: false,
+    details: true,
+    hide_side_toolbar: true,
+    hide_top_toolbar: false,
+    hide_legend: false,
+    hide_volume: false,
+    hotlist: false,
+    interval: 'D',
+    locale: 'en',
+    save_image: false,
+    style: 1,
+    symbol: symbol.toUpperCase(),
