@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — User controlled data in methods like `innerHTML`, `outerHTML` or `document.write` is an anti-pattern that can lead to XSS vulnerabilities
+// CWE: CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+// Description: User controlled data in methods like `innerHTML`, `outerHTML` or `document.write` is an anti-pattern that can lead to XSS vulnerabilities
+// TODO: Apply a proper fix for this vulnerability.
 'use client';
 import { useEffect, useRef }     from "react";
 
