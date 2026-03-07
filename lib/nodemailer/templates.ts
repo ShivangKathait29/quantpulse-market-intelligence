@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.80).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.96).
 // TODO: Apply a proper fix for this vulnerability.
-                line-height: 1.5 !important;
-            }
-            .mobile-title {
-                font-size: 24px !important;
-                line-height: 1.3 !important;
             }
             .mobile-news-title {
                 font-size: 16px !important;
@@ -96,3 +91,8 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             <o:OfficeDocumentSettings>
                 <o:AllowPNG/>
                 <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style type="text/css">
