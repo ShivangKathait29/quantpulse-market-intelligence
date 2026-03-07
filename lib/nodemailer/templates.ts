@@ -1,27 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.91).
+// Description: ML classifier detected potential path traversal (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
-                                    You're receiving this because you subscribed to Signalist news updates.
-                                </p>
-                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
-                                    <a href="https://signalist.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
-                                </p>
-                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    © 2025 Signalist
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>
-</html>`;
-
 export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,4 +75,24 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 width: calc(100% - 32px) !important;
                 display: block !important;
                 text-align: center !important;
+            }
+            .mobile-outer-padding {
+                padding: 20px 10px !important;
+            }
+            .mobile-price {
+                font-size: 28px !important;
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .mobile-title {
+                font-size: 22px !important;
+            }
+            .mobile-padding {
+                padding: 15px !important;
+            }
+            .mobile-header-padding {
+                padding: 15px 15px 8px 15px !important;
+            }
+            .mobile-price {
+                font-size: 24px !important;
             }
