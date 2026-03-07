@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.83).
+// Description: ML classifier detected potential command injection (confidence: 0.74).
 // TODO: Apply a proper fix for this vulnerability.
-                                </h3>
-                                <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Trigger:</strong> {{alertMessage}}
-                                </p>
-                                <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Average Volume:</strong> {{averageVolume}}M shares
-                                </p>
-                                <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Spike Detected:</strong> {{volumeSpike}} above normal trading activity
-                                </p>
                             </div>
                             
                             <!-- What This Means -->
@@ -96,3 +86,13 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .dark-text {
                 color: #ffffff !important;
             }
+            .dark-text-secondary {
+                color: #9ca3af !important;
+            }
+            .dark-text-muted {
+                color: #6b7280 !important;
+            }
+            .dark-border {
+                border-color: #30333A !important;
+            }
+            .dark-info-box {
