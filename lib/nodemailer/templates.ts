@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.77).
+// Description: ML classifier detected potential path traversal (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
 export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
@@ -77,3 +77,18 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .dashboard-preview {
                 padding: 0 15px 30px 15px !important;
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .mobile-title {
+                font-size: 22px !important;
+            }
+            .mobile-padding {
+                padding: 15px !important;
+            }
+            .mobile-header-padding {
+                padding: 15px 15px 8px 15px !important;
+            }
+        }
+    </style>
+</head>
