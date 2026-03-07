@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 0.72).
+// TODO: Apply a proper fix for this vulnerability.
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
