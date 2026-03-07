@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.91).
+// Description: ML classifier detected potential command injection (confidence: 0.92).
 // TODO: Apply a proper fix for this vulnerability.
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                            <!-- Footer Text -->
                             <p class="mobile-text dark-text-muted" style="margin: 40px 0 0 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important; text-align: center;">
                                Signalist HQ, 200 Market Street, San Francisco, CA 94105<br>
                                 <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
@@ -96,3 +91,8 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 padding: 20px 10px !important;
             }
         }
+        @media only screen and (max-width: 480px) {
+            .mobile-title {
+                font-size: 22px !important;
+            }
+            .mobile-padding {
