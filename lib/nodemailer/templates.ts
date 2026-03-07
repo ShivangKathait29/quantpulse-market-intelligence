@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.72).
+// Description: ML classifier detected potential command injection (confidence: 0.59).
 // TODO: Apply a proper fix for this vulnerability.
-            .mobile-title {
-                font-size: 22px !important;
-            }
-            .mobile-padding {
-                padding: 15px !important;
             }
             .mobile-header-padding {
                 padding: 15px 15px 8px 15px !important;
@@ -96,3 +91,8 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 background-color: #050505 !important;
             }
             .dark-text {
+                color: #ffffff !important;
+            }
+            .dark-text-secondary {
+                color: #9ca3af !important;
+            }
