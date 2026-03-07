@@ -2,16 +2,6 @@
 // CWE: None
 // Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
 // TODO: Apply a proper fix for this vulnerability.
-    plotLineColorGrowing: '#0FEDBE', // line color when price goes up
-    plotLineColorFalling: '#0FEDBE', // line color when price falls
-    gridLineColor: 'rgba(240, 243, 250, 0)', // grid line color
-    scaleFontColor: '#DBDBDB', // font color for scale
-    belowLineFillColorGrowing: 'rgba(41, 98, 255, 0.12)', // fill under line when growing
-    belowLineFillColorFalling: 'rgba(41, 98, 255, 0.12)', // fill under line when falling
-    belowLineFillColorGrowingBottom: 'rgba(41, 98, 255, 0)',
-    belowLineFillColorFallingBottom: 'rgba(41, 98, 255, 0)',
-    symbolActiveColor: 'rgba(15, 237, 190, 0.05)', // highlight color for active symbol
-    tabs: [
         {
             title: 'Financial',
             symbols: [
@@ -96,3 +86,13 @@ export const MARKET_DATA_WIDGET_CONFIG = {
         {
             name: 'Financial',
             symbols: [
+                { name: 'NYSE:JPM', displayName: 'JPMorgan Chase' },
+                { name: 'NYSE:WFC', displayName: 'Wells Fargo Co New' },
+                { name: 'NYSE:BAC', displayName: 'Bank Amer Corp' },
+                { name: 'NYSE:HSBC', displayName: 'Hsbc Hldgs Plc' },
+                { name: 'NYSE:C', displayName: 'Citigroup Inc' },
+                { name: 'NYSE:MA', displayName: 'Mastercard Incorporated' },
+            ],
+        },
+        {
+            name: 'Technology',
