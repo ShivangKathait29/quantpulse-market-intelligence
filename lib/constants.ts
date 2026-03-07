@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.75).
+// Description: ML classifier detected potential command injection (confidence: 0.75).
 // TODO: Apply a proper fix for this vulnerability.
-    { value: 'Conservative', label: 'Conservative' },
-];
-
-export const RISK_TOLERANCE_OPTIONS = [
-    { value: 'Low', label: 'Low' },
-    { value: 'Medium', label: 'Medium' },
-    { value: 'High', label: 'High' },
-];
-
-export const PREFERRED_INDUSTRIES = [
     { value: 'Technology', label: 'Technology' },
     { value: 'Healthcare', label: 'Healthcare' },
     { value: 'Finance', label: 'Finance' },
@@ -96,3 +86,13 @@ export const HEATMAP_WIDGET_CONFIG = {
     isTransparent: true,
     locale: 'en',
     symbolUrl: '',
+    colorTheme: 'dark',
+    exchanges: [],
+    hasTopBar: false,
+    isDataSetEnabled: false,
+    isZoomEnabled: true,
+    hasSymbolTooltip: true,
+    isMonoSize: false,
+    width: '100%',
+    height: '600',
+};
