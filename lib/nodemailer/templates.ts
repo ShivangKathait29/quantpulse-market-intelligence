@@ -1,22 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.90).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
 // TODO: Apply a proper fix for this vulnerability.
-                                </h2>
-                                <p class="dark-text-muted" style="margin: 0 0 20px 0; font-size: 16px; color: #6b7280;">
-                                    {{company}}
-                                </p>
-                                
-                                <!-- Current Price -->
-                                <div style="margin-bottom: 20px;">
-                                    <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Price
-                                    </p>
-                                    <p class="mobile-price" style="margin: 0; font-size: 36px; font-weight: 700; color: #ef4444;">
-                                        {{currentPrice}}
-                                    </p>
-                                </div>
-                            </div>
                             
                             <!-- Alert Details -->
                             <div class="dark-info-box" style="background-color: #212328; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
@@ -96,3 +81,18 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
     <style type="text/css">
         /* Dark mode styles */
         @media (prefers-color-scheme: dark) {
+            .email-container {
+                background-color: #141414 !important;
+                border: 1px solid #30333A !important;
+            }
+            .dark-bg {
+                background-color: #050505 !important;
+            }
+            .dark-text {
+                color: #ffffff !important;
+            }
+            .dark-text-secondary {
+                color: #9ca3af !important;
+            }
+            .dark-text-muted {
+                color: #6b7280 !important;
