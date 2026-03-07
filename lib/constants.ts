@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.66).
+// Description: ML classifier detected potential command injection (confidence: 0.89).
 // TODO: Apply a proper fix for this vulnerability.
-                { name: 'NYSE:V', displayName: 'Visa' },
-            ],
-        },
-    ],
-};
-
-export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
-    symbol: symbol.toUpperCase(),
-    colorTheme: 'dark',
-    isTransparent: true,
     locale: 'en',
     width: '100%',
     height: 170,
@@ -96,3 +86,13 @@ export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
     locale: 'en',
     width: '100%',
     height: 464,
+    displayMode: 'regular',
+    largeChartUrl: '',
+});
+
+export const POPULAR_STOCK_SYMBOLS = [
+    // Tech Giants (the big technology companies)
+    'AAPL',
+    'MSFT',
+    'GOOGL',
+    'AMZN',
