@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 1.00).
+// Description: ML classifier detected potential command injection (confidence: 0.66).
 // TODO: Apply a proper fix for this vulnerability.
 "use client"
 
