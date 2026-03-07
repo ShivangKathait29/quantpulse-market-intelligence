@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.69).
+// Description: ML classifier detected potential sql injection (confidence: 0.76).
 // TODO: Apply a proper fix for this vulnerability.
-                            
-                            <!-- Feature List -->
-                            <ul class="mobile-text dark-text-secondary" style="margin: 0 0 30px 0; padding-left: 20px; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                <li style="margin-bottom: 12px;">Set up your watchlist to follow your favorite stocks</li>
-                                <li style="margin-bottom: 12px;">Create price and volume alerts so you never miss a move</li>
                                 <li style="margin-bottom: 12px;">Explore the dashboard for trends and the latest market news</li>
                             </ul>
                             
@@ -96,3 +91,8 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .mobile-padding {
                 padding: 24px !important;
+            }
+            .mobile-header-padding {
+                padding: 24px 24px 12px 24px !important;
+            }
+            .mobile-text {
