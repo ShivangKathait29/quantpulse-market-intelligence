@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.83).
+// Description: ML classifier detected potential sql injection (confidence: 0.82).
 // TODO: Apply a proper fix for this vulnerability.
-</head>
-<body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
-        <tr>
-            <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="email-container" style="max-width: 600px; background-color: #141414; border-radius: 8px; border: 1px solid #30333A;">
                     
                     <!-- Header with Logo -->
@@ -96,3 +91,8 @@
                             
                             <!-- Action Button -->
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="https://stock-market-dev.vercel.app/" style="display: inline-block; background-color: #E8BA40; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1;">
+                                            View Dashboard
+                                        </a>
