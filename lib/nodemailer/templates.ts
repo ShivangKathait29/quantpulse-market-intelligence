@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.85).
+// Description: ML classifier detected potential sql injection (confidence: 0.89).
 // TODO: Apply a proper fix for this vulnerability.
-            }
-        }
-    </style>
-</head>
-<body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
         <tr>
             <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
