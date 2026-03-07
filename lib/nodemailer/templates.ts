@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.91).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.67).
 // TODO: Apply a proper fix for this vulnerability.
-                            <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
-                        </td>
-                    </tr>
-                    
-                    <!-- Alert Header -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 0 40px 20px 40px;">
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #dc2626; border-radius: 8px; padding: 20px;">
-                                <tr>
-                                    <td align="center">
-                                        <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📉 Price Below Hit
-                                        </h1>
-                                        <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
-                                            {{timestamp}}
                                         </p>
                                     </td>
                                 </tr>
@@ -96,3 +81,18 @@
                                 </p>
                             </div>
                         </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>`;
+
+export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
