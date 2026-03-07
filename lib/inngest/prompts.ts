@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.91).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.93).
 // TODO: Apply a proper fix for this vulnerability.
-- For each news article, include its actual headline/title from the news data
-- Provide MINIMUM 3 CONCISE bullet points (NO "Key Takeaways" label - start directly with bullets)
-- Each bullet should be SHORT and EASY TO UNDERSTAND - one clear sentence preferred
-- Use PLAIN ENGLISH - avoid jargon, complex financial terms, or insider language
-- Explain concepts as if talking to someone new to investing
-- Include specific numbers but explain what they mean in simple terms
-- Add "Bottom Line" context in everyday language anyone can understand
-- Use clean, light design with yellow bullets for better readability
-- Make each article easy to scan with clear spacing and structure
-- Always include simple "Read Full Story" buttons with actual URLs
 - Focus on PRACTICAL insights regular people can understand and use
 - Explain what the news means for regular investors' money
 - Keep language conversational and accessible to everyone
@@ -96,3 +86,13 @@ RESPONSE FORMAT:
 Return ONLY a valid JSON object with this exact structure:
 {
   "tradingViewSymbol": "EXCHANGE:SYMBOL",
+  "confidence": "high|medium|low",
+  "reasoning": "Brief explanation of why this mapping is correct"
+}
+
+EXAMPLES:
+- Apple Inc. (AAPL) from Finnhub → {"tradingViewSymbol": "NASDAQ:AAPL", "confidence": "high", "reasoning": "Apple trades on NASDAQ as AAPL"}
+- Microsoft Corp (MSFT) from Finnhub → {"tradingViewSymbol": "NASDAQ:MSFT", "confidence": "high", "reasoning": "Microsoft trades on NASDAQ as MSFT"}
+- Barclays PLC (BARC.L) from Finnhub → {"tradingViewSymbol": "LSE:BARC", "confidence": "high", "reasoning": "Barclays trades on London Stock Exchange as BARC"}
+
+Your response must be valid JSON only. Do not include any other text.`
