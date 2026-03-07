@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.88).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.59).
 // TODO: Apply a proper fix for this vulnerability.
 import * as React from "react"
 
