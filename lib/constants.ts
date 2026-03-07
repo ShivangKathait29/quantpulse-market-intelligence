@@ -1,27 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.60).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.87).
 // TODO: Apply a proper fix for this vulnerability.
-    grouping: 'sector',
-    isTransparent: true,
-    locale: 'en',
-    symbolUrl: '',
-    colorTheme: 'dark',
-    exchanges: [],
-    hasTopBar: false,
-    isDataSetEnabled: false,
-    isZoomEnabled: true,
-    hasSymbolTooltip: true,
-    isMonoSize: false,
-    width: '100%',
-    height: '600',
-};
-
-export const TOP_STORIES_WIDGET_CONFIG = {
-    displayMode: 'regular',
-    feedMode: 'market',
-    colorTheme: 'dark',
-    isTransparent: true,
     locale: 'en',
     market: 'stock',
     width: '100%',
@@ -96,3 +76,23 @@ export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     save_image: false,
     style: 1,
     symbol: symbol.toUpperCase(),
+    theme: 'dark',
+    timezone: 'Etc/UTC',
+    backgroundColor: '#141414',
+    gridColor: '#141414',
+    watchlist: [],
+    withdateranges: false,
+    compareSymbols: [],
+    studies: [],
+    width: '100%',
+    height: 600,
+});
+
+export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
+    allow_symbol_change: false,
+    calendar: false,
+    details: false,
+    hide_side_toolbar: true,
+    hide_top_toolbar: false,
+    hide_legend: false,
+    hide_volume: false,
