@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.73).
+// Description: ML classifier detected potential command injection (confidence: 0.63).
 // TODO: Apply a proper fix for this vulnerability.
-    hide_top_toolbar: false,
-    hide_legend: false,
-    hide_volume: false,
-    hotlist: false,
-    interval: 'D',
     locale: 'en',
     save_image: false,
     style: 1,
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     // Growing Tech Companies
     'ADBE',
     'INTC',
+    'AMD',
+    'PYPL',
+    'UBER',
+    'ZOOM',
+    'SPOT',
