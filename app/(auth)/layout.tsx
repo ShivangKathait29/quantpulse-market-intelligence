@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.74).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.61).
 // TODO: Apply a proper fix for this vulnerability.
 import Link from "next/link";
 import Image from "next/image";
