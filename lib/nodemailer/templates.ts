@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.60).
+// Description: ML classifier detected potential command injection (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
-    </table>
-</body>
-</html>`;
-
-export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
     <title>Price Alert: {{symbol}} Hit Lower Target</title>
     <!--[if mso]>
@@ -96,3 +86,13 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .mobile-header-padding {
                 padding: 15px 15px 8px 15px !important;
+            }
+            .mobile-price {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
+        <tr>
