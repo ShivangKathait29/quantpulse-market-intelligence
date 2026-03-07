@@ -1,17 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.96).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.75).
 // TODO: Apply a proper fix for this vulnerability.
-    { href: '/', label: 'Dashboard' },
-    { href: '/search', label: 'Search' },
-    // { href: '/watchlist', label: 'Watchlist' },
-];
-
-// Sign-up form select options
-export const INVESTMENT_GOALS = [
-    { value: 'Growth', label: 'Growth' },
-    { value: 'Income', label: 'Income' },
-    { value: 'Balanced', label: 'Balanced' },
     { value: 'Conservative', label: 'Conservative' },
 ];
 
@@ -96,3 +86,13 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
     height: 600, // height in px
     showSymbolLogo: true, // show logo next to symbols
     showChart: true, // display mini chart
+};
+
+export const HEATMAP_WIDGET_CONFIG = {
+    dataSource: 'SPX500',
+    blockSize: 'market_cap_basic',
+    blockColor: 'change',
+    grouping: 'sector',
+    isTransparent: true,
+    locale: 'en',
+    symbolUrl: '',
