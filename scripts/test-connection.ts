@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 1.00).
+// Description: ML classifier detected potential path traversal (confidence: 0.90).
 // TODO: Apply a proper fix for this vulnerability.
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
