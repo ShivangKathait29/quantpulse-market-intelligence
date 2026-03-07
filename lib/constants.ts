@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.71).
+// Description: ML classifier detected potential command injection (confidence: 0.59).
 // TODO: Apply a proper fix for this vulnerability.
-    hide_side_toolbar: true,
-    hide_top_toolbar: false,
-    hide_legend: false,
-    hide_volume: false,
-    hotlist: false,
     interval: 'D',
     locale: 'en',
     save_image: false,
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'DOCU',
     'PTON',
     'PINS',
+    'SNAP',
+    'LYFT',
+    'DASH',
+    'ABNB',
+    'RIVN',
