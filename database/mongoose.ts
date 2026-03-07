@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.88).
+// Description: ML classifier detected potential path traversal (confidence: 1.00).
 // TODO: Apply a proper fix for this vulnerability.
 import mongoose from 'mongoose';
 
