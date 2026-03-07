@@ -1,22 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.67).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.90).
 // TODO: Apply a proper fix for this vulnerability.
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    
-                    <!-- Main Content -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 0 40px 40px 40px;">
-                            
-                            <!-- Stock Info -->
-                            <div class="dark-bg" style="text-align: center; padding: 30px 20px; background-color: #212328; border-radius: 8px; margin-bottom: 10px;">
-                                <h2 class="dark-text" style="margin: 0 0 10px 0; font-size: 28px; font-weight: 700; color: #ffffff;">
-                                    {{symbol}}
                                 </h2>
                                 <p class="dark-text-muted" style="margin: 0 0 20px 0; font-size: 16px; color: #6b7280;">
                                     {{company}}
@@ -96,3 +81,18 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Volume Alert: {{symbol}}</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style type="text/css">
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
