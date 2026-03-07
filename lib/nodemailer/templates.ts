@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.96).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.66).
 // TODO: Apply a proper fix for this vulnerability.
-                    </tr>
-                    
-                    <!-- Main Content -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 0 40px 40px 40px;">
                             
                             <!-- Stock Info -->
                             <div class="dark-bg" style="text-align: center; padding: 30px 20px; background-color: #050505; border-radius: 8px; margin-bottom: 30px;">
@@ -96,3 +91,8 @@
                                 </p>
                             </div>
                         </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
