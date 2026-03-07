@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.59).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-    interval: 'D',
-    locale: 'en',
-    save_image: false,
-    style: 10,
-    symbol: symbol.toUpperCase(),
     theme: 'dark',
     timezone: 'Etc/UTC',
     backgroundColor: '#141414',
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'DASH',
     'ABNB',
     'RIVN',
+    'LCID',
+    'NIO',
+
+    // International Companies
+    'XPEV',
