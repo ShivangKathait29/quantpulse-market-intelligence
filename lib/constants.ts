@@ -2,21 +2,6 @@
 // CWE: None
 // Description: ML classifier detected potential path traversal (confidence: 0.76).
 // TODO: Apply a proper fix for this vulnerability.
-            ],
-        },
-        {
-            name: 'Technology',
-            symbols: [
-                { name: 'NASDAQ:AAPL', displayName: 'Apple' },
-                { name: 'NASDAQ:GOOGL', displayName: 'Alphabet' },
-                { name: 'NASDAQ:MSFT', displayName: 'Microsoft' },
-                { name: 'NASDAQ:FB', displayName: 'Meta Platforms' },
-                { name: 'NYSE:ORCL', displayName: 'Oracle Corp' },
-                { name: 'NASDAQ:INTC', displayName: 'Intel Corp' },
-            ],
-        },
-        {
-            name: 'Services',
             symbols: [
                 { name: 'NASDAQ:AMZN', displayName: 'Amazon' },
                 { name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
@@ -96,3 +81,18 @@ export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
     locale: 'en',
     width: '100%',
     height: 400,
+    interval: '1h',
+    largeChartUrl: '',
+});
+
+export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
+    symbol: symbol.toUpperCase(),
+    colorTheme: 'dark',
+    isTransparent: 'true',
+    locale: 'en',
+    width: '100%',
+    height: 440,
+});
+
+export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
+    symbol: symbol.toUpperCase(),
