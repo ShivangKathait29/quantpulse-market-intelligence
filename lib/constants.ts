@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.71).
+// Description: ML classifier detected potential command injection (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-                { s: 'NYSE:BAC', d: 'Bank Amer Corp' },
-                { s: 'NYSE:HSBC', d: 'Hsbc Hldgs Plc' },
-                { s: 'NYSE:C', d: 'Citigroup Inc' },
-                { s: 'NYSE:MA', d: 'Mastercard Incorporated' },
-            ],
-        },
-        {
-            title: 'Technology',
-            symbols: [
-                { s: 'NASDAQ:AAPL', d: 'Apple' },
                 { s: 'NASDAQ:GOOGL', d: 'Alphabet' },
                 { s: 'NASDAQ:MSFT', d: 'Microsoft' },
                 { s: 'NASDAQ:FB', d: 'Meta Platforms' },
@@ -96,3 +86,13 @@ export const MARKET_DATA_WIDGET_CONFIG = {
                 { name: 'NASDAQ:GOOGL', displayName: 'Alphabet' },
                 { name: 'NASDAQ:MSFT', displayName: 'Microsoft' },
                 { name: 'NASDAQ:FB', displayName: 'Meta Platforms' },
+                { name: 'NYSE:ORCL', displayName: 'Oracle Corp' },
+                { name: 'NASDAQ:INTC', displayName: 'Intel Corp' },
+            ],
+        },
+        {
+            name: 'Services',
+            symbols: [
+                { name: 'NASDAQ:AMZN', displayName: 'Amazon' },
+                { name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
+                { name: 'NYSE:T', displayName: 'At&t Inc' },
