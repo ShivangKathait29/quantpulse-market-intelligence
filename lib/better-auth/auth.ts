@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.91).
+// Description: ML classifier detected potential path traversal (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
 import { betterAuth } from "better-auth";
 import { mongodbAdapter} from "better-auth/adapters/mongodb";
