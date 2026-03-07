@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.84).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.76).
 // TODO: Apply a proper fix for this vulnerability.
 import TradingViewWidget from "@/components/TradingViewWidget";
 import {
