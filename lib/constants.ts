@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.75).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.78).
 // TODO: Apply a proper fix for this vulnerability.
-    { value: 'Technology', label: 'Technology' },
-    { value: 'Healthcare', label: 'Healthcare' },
-    { value: 'Finance', label: 'Finance' },
-    { value: 'Energy', label: 'Energy' },
-    { value: 'Consumer Goods', label: 'Consumer Goods' },
-];
-
-export const ALERT_TYPE_OPTIONS = [
-    { value: 'upper', label: 'Upper' },
-    { value: 'lower', label: 'Lower' },
-];
-
-export const CONDITION_OPTIONS = [
-    { value: 'greater', label: 'Greater than (>)' },
-    { value: 'less', label: 'Less than (<)' },
 ];
 
 // TradingView Charts
@@ -96,3 +81,18 @@ export const HEATMAP_WIDGET_CONFIG = {
     width: '100%',
     height: '600',
 };
+
+export const TOP_STORIES_WIDGET_CONFIG = {
+    displayMode: 'regular',
+    feedMode: 'market',
+    colorTheme: 'dark',
+    isTransparent: true,
+    locale: 'en',
+    market: 'stock',
+    width: '100%',
+    height: '600',
+};
+
+export const MARKET_DATA_WIDGET_CONFIG = {
+    title: 'Stocks',
+    width: '100%',
