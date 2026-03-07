@@ -1,17 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.78).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
 // TODO: Apply a proper fix for this vulnerability.
-];
-
-// TradingView Charts
-export const MARKET_OVERVIEW_WIDGET_CONFIG = {
-    colorTheme: 'dark', // dark mode
-    dateRange: '12M', // last 12 months
-    locale: 'en', // language
-    largeChartUrl: '', // link to a large chart if needed
-    isTransparent: true, // makes background transparent
-    showFloatingTooltip: true, // show tooltip on hover
     plotLineColorGrowing: '#0FEDBE', // line color when price goes up
     plotLineColorFalling: '#0FEDBE', // line color when price falls
     gridLineColor: 'rgba(240, 243, 250, 0)', // grid line color
@@ -96,3 +86,13 @@ export const TOP_STORIES_WIDGET_CONFIG = {
 export const MARKET_DATA_WIDGET_CONFIG = {
     title: 'Stocks',
     width: '100%',
+    height: 600,
+    locale: 'en',
+    showSymbolLogo: true,
+    colorTheme: 'dark',
+    isTransparent: false,
+    backgroundColor: '#0F0F0F',
+    symbolsGroups: [
+        {
+            name: 'Financial',
+            symbols: [
