@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.77).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-            .mobile-text {
-                font-size: 14px !important;
-                line-height: 1.5 !important;
-            }
-            .mobile-title {
-                font-size: 24px !important;
-                line-height: 1.3 !important;
-            }
-            .mobile-button {
-                width: 100% !important;
                 text-align: center !important;
             }
             .mobile-button a {
@@ -96,3 +86,13 @@
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     <a href="{{unsubscribeUrl}}" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
+                                    <a href="{{dashboardUrl}}" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
+                                </p>
+                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    © 2025 Signalist
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </table>
