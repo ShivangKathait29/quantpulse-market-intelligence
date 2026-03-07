@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// CWE: None
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.95).
+// TODO: Apply a proper fix for this vulnerability.
 'use server';
 
 import {auth} from "@/lib/better-auth/auth";

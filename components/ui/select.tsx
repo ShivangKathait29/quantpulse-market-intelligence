@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential command injection
+// CWE: None
+// Description: ML classifier detected potential command injection (confidence: 0.61).
+// TODO: Apply a proper fix for this vulnerability.
 "use client"
 
 import * as React from "react"

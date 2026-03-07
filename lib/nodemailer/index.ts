@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// CWE: None
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.79).
+// TODO: Apply a proper fix for this vulnerability.
 import nodemailer from 'nodemailer';
 import {WELCOME_EMAIL_TEMPLATE, NEWS_SUMMARY_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 
@@ -33,10 +37,10 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-        from: `"QuantPulse News" <test@localhost>`,
+        from: `"Signalist News" <signalist@jsmastery.pro>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
-        text: `Today's market news summary from QuantPulse`,
+        text: `Today's market news summary from Signalist`,
         html: htmlTemplate,
     };
 

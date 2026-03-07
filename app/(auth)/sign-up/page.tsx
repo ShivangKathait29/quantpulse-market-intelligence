@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential command injection
+// CWE: None
+// Description: ML classifier detected potential command injection (confidence: 0.66).
+// TODO: Apply a proper fix for this vulnerability.
 'use client';
 
 import {useForm} from "react-hook-form";
@@ -51,7 +55,7 @@ const SignUp = () => {
                 <InputField
                     name="fullName"
                     label="Full Name"
-                    placeholder="Enter your name"
+                    placeholder="John Doe"
                     register={register}
                     error={errors.fullName}
                     validation={{ required: 'Full name is required', minLength: 2 }}

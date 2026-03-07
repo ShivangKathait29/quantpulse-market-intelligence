@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 1.00).
+// TODO: Apply a proper fix for this vulnerability.
 import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;

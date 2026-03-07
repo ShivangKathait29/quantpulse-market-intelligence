@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// CWE: None
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.92).
+// TODO: Apply a proper fix for this vulnerability.
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import path from 'path';

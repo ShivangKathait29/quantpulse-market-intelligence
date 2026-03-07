@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential command injection
+// CWE: None
+// Description: ML classifier detected potential command injection (confidence: 0.65).
+// TODO: Apply a proper fix for this vulnerability.
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 

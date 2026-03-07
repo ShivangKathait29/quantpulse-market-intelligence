@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 0.73).
+// TODO: Apply a proper fix for this vulnerability.
 import Link from "next/link";
 import Image from "next/image";
 import {auth} from "@/lib/better-auth/auth";

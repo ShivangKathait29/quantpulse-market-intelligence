@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential command injection
+// CWE: None
+// Description: ML classifier detected potential command injection (confidence: 0.93).
+// TODO: Apply a proper fix for this vulnerability.
 declare global {
     type SignInFormData = {
         email: string;
@@ -59,11 +63,6 @@ declare global {
         renderAs?: 'button' | 'text';
         label?: string;
         initialStocks: StockWithWatchlistStatus[];
-        open?: boolean;
-        setOpen?: (open: boolean) => void;
-        buttonLabel?: string;
-        buttonVariant?: 'primary' | 'secondary';
-        className?: string;
     };
 
     type WelcomeEmailData = {
@@ -173,6 +172,14 @@ declare global {
         news?: MarketNewsArticle[];
     };
 
+    type SearchCommandProps = {
+        open?: boolean;
+        setOpen?: (open: boolean) => void;
+        renderAs?: 'button' | 'text';
+        buttonLabel?: string;
+        buttonVariant?: 'primary' | 'secondary';
+        className?: string;
+    };
 
     type AlertData = {
         symbol: string;

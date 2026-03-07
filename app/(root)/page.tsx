@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential command injection
+// CWE: None
+// Description: ML classifier detected potential command injection (confidence: 0.74).
+// TODO: Apply a proper fix for this vulnerability.
 import TradingViewWidget from "@/components/TradingViewWidget";
 import {
     HEATMAP_WIDGET_CONFIG,

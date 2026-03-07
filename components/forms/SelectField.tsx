@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 0.60).
+// TODO: Apply a proper fix for this vulnerability.
 import {Label} from "@/components/ui/label";
 import {Controller} from "react-hook-form";
 import {
