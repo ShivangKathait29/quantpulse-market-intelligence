@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.61).
+// Description: ML classifier detected potential sql injection (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
 import Link from "next/link";
 import Image from "next/image";
