@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.77).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-            }
-            .mobile-title {
-                font-size: 24px !important;
-                line-height: 1.3 !important;
-            }
-            .mobile-button {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            .mobile-button a {
                 width: calc(100% - 64px) !important;
                 display: block !important;
                 text-align: center !important;
@@ -96,3 +86,13 @@
                                 </tr>
                             </table>
                             
+                            <!-- Footer Text -->
+                            <p class="mobile-text dark-text-muted" style="margin: 40px 0 0 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important; text-align: center;">
+                               Signalist HQ, 200 Market Street, San Francisco, CA 94105<br>
+                                <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
+                                <a href="https://stock-market-dev.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a><br>
+                                © 2025 Signalist
+                            </p>
+                        </td>
+                    </tr>
+                    
