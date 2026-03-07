@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 1.00).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.85).
 // TODO: Apply a proper fix for this vulnerability.
 declare global {
     type SignInFormData = {
