@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.70).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.67).
 // TODO: Apply a proper fix for this vulnerability.
-    <noscript>
-        <xml>
-            <o:OfficeDocumentSettings>
-                <o:AllowPNG/>
-                <o:PixelsPerInch>96</o:PixelsPerInch>
-            </o:OfficeDocumentSettings>
-        </xml>
-    </noscript>
-    <![endif]-->
-    <style type="text/css">
         /* Dark mode styles */
         @media (prefers-color-scheme: dark) {
             .email-container {
@@ -95,4 +85,14 @@
                     <!-- Main Content -->
                     <tr>
                         <td class="mobile-padding" style="padding: 40px 40px 40px 40px;">
+                            
+                            <!-- Header -->
+                            <h1 class="mobile-title dark-text" style="margin: 0 0 20px 0; font-size: 24px; font-weight: 600; color: #FDD458; line-height: 1.2;">
+                                Market News Summary Today
+                            </h1>
+                            
+                            <!-- Date -->
+                            <p class="mobile-text dark-text-muted" style="margin: 0 0 30px 0; font-size: 14px; line-height: 1.4; color: #6b7280;">
+                                {{date}}
+                            </p>
                             
