@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.96).
+// Description: ML classifier detected potential sql injection (confidence: 0.87).
 // TODO: Apply a proper fix for this vulnerability.
-                    <!-- Main Content -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 40px 40px 40px 40px;">
-                            
-                            <!-- Header -->
                             <h1 class="mobile-title dark-text" style="margin: 0 0 20px 0; font-size: 24px; font-weight: 600; color: #FDD458; line-height: 1.2;">
                                 Market News Summary Today
                             </h1>
@@ -96,3 +91,8 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .mobile-padding {
                 padding: 24px !important;
             }
+            .mobile-header-padding {
+                padding: 24px 24px 12px 24px !important;
+            }
+            .mobile-text {
+                font-size: 14px !important;
