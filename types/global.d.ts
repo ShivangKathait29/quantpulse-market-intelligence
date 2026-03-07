@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.90).
+// Description: ML classifier detected potential path traversal (confidence: 1.00).
 // TODO: Apply a proper fix for this vulnerability.
 declare global {
     type SignInFormData = {
