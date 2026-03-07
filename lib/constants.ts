@@ -1,42 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.60).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.57).
 // TODO: Apply a proper fix for this vulnerability.
-    'META',
-    'NVDA',
-    'NFLX',
-    'ORCL',
-    'CRM',
-
-    // Growing Tech Companies
-    'ADBE',
-    'INTC',
-    'AMD',
-    'PYPL',
-    'UBER',
-    'ZOOM',
-    'SPOT',
-    'SQ',
-    'SHOP',
-    'ROKU',
-
-    // Newer Tech Companies
-    'SNOW',
-    'PLTR',
-    'COIN',
-    'RBLX',
-    'DDOG',
-    'CRWD',
-    'NET',
-    'OKTA',
-    'TWLO',
-    'ZM',
-
-    // Consumer & Delivery Apps
-    'DOCU',
-    'PTON',
-    'PINS',
-    'SNAP',
     'LYFT',
     'DASH',
     'ABNB',
