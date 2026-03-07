@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 1.00).
+// Description: ML classifier detected potential command injection (confidence: 0.84).
 // TODO: Apply a proper fix for this vulnerability.
 "use client"
 
