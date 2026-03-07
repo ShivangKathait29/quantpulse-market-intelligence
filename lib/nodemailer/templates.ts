@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.68).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.90).
 // TODO: Apply a proper fix for this vulnerability.
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="x-apple-disable-message-reformatting">
     <title>We Miss You! Your Market Insights Await</title>
     <!--[if mso]>
     <noscript>
@@ -96,3 +91,8 @@
         <tr>
             <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="email-container" style="max-width: 600px; background-color: #141414; border-radius: 8px; border: 1px solid #30333A;">
+                    
+                    <!-- Header with Logo -->
+                    <tr>
+                        <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
+                            <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
