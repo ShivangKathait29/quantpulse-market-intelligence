@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.83).
+// Description: ML classifier detected potential command injection (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-            <td align="center" class="mobile-outer-padding" style="padding: 40px 20px;">
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="email-container" style="max-width: 600px; background-color: #141414; border-radius: 8px; border: 1px solid #30333A;">
-                    
-                    <!-- Header with Logo -->
-                    <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
                             <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
                         </td>
@@ -96,3 +91,8 @@
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
                                     <a href="https://signalist.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
+                                </p>
+                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    © 2025 Signalist
+                                </p>
+                            </div>
