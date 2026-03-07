@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.90).
+// Description: ML classifier detected potential command injection (confidence: 0.93).
 // TODO: Apply a proper fix for this vulnerability.
 export const NAV_ITEMS = [
     { href: '/', label: 'Dashboard' },
@@ -67,3 +67,18 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
                 { s: 'NYSE:HSBC', d: 'Hsbc Hldgs Plc' },
                 { s: 'NYSE:C', d: 'Citigroup Inc' },
                 { s: 'NYSE:MA', d: 'Mastercard Incorporated' },
+            ],
+        },
+        {
+            title: 'Technology',
+            symbols: [
+                { s: 'NASDAQ:AAPL', d: 'Apple' },
+                { s: 'NASDAQ:GOOGL', d: 'Alphabet' },
+                { s: 'NASDAQ:MSFT', d: 'Microsoft' },
+                { s: 'NASDAQ:FB', d: 'Meta Platforms' },
+                { s: 'NYSE:ORCL', d: 'Oracle Corp' },
+                { s: 'NASDAQ:INTC', d: 'Intel Corp' },
+            ],
+        },
+        {
+            title: 'Services',
