@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.85).
+// Description: ML classifier detected potential path traversal (confidence: 0.84).
 // TODO: Apply a proper fix for this vulnerability.
 import {inngest} from "@/lib/inngest/client";
 import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/lib/inngest/prompts";
