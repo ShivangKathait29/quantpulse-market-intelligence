@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.86).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.82).
 // TODO: Apply a proper fix for this vulnerability.
-
-export const MARKET_DATA_WIDGET_CONFIG = {
-    title: 'Stocks',
-    width: '100%',
-    height: 600,
-    locale: 'en',
-    showSymbolLogo: true,
-    colorTheme: 'dark',
-    isTransparent: false,
-    backgroundColor: '#0F0F0F',
     symbolsGroups: [
         {
             name: 'Financial',
@@ -96,3 +86,13 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     locale: 'en',
     save_image: false,
     style: 10,
+    symbol: symbol.toUpperCase(),
+    theme: 'dark',
+    timezone: 'Etc/UTC',
+    backgroundColor: '#141414',
+    gridColor: '#141414',
+    watchlist: [],
+    withdateranges: false,
+    compareSymbols: [],
+    studies: [],
+    width: '100%',
