@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.97).
+// Description: ML classifier detected potential sql injection (confidence: 0.86).
 // TODO: Apply a proper fix for this vulnerability.
-            }
-            .mobile-volume {
-                font-size: 28px !important;
-            }
-        }
         @media only screen and (max-width: 480px) {
             .mobile-title {
                 font-size: 22px !important;
@@ -96,3 +91,8 @@
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
                                     <strong>Trigger:</strong> {{alertMessage}}
                                 </p>
+                                <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
+                                    <strong>Average Volume:</strong> {{averageVolume}}M shares
+                                </p>
+                                <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
+                                    <strong>Spike Detected:</strong> {{volumeSpike}} above normal trading activity
