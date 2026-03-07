@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// CWE: None
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.97).
+// TODO: Apply a proper fix for this vulnerability.
 import React from 'react'
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
