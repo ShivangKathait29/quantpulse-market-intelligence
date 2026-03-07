@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.90).
+// Description: ML classifier detected potential path traversal (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
 'use client';
 
