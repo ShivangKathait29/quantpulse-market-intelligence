@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 0.83).
+// TODO: Apply a proper fix for this vulnerability.
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
