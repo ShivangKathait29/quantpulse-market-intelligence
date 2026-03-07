@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.95).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.77).
 // TODO: Apply a proper fix for this vulnerability.
-
-                             <!-- Footer Text -->
-                            <div style="text-align: center; margin: 40px 0 0 0;">
-                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Signalist news updates.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
@@ -96,3 +91,8 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 text-align: center !important;
             }
             .mobile-button a {
+                width: calc(100% - 32px) !important;
+                display: block !important;
+                text-align: center !important;
+            }
+            .mobile-outer-padding {
