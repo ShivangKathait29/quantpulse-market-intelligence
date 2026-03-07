@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.82).
+// Description: ML classifier detected potential command injection (confidence: 0.65).
 // TODO: Apply a proper fix for this vulnerability.
-    symbolsGroups: [
-        {
-            name: 'Financial',
-            symbols: [
-                { name: 'NYSE:JPM', displayName: 'JPMorgan Chase' },
                 { name: 'NYSE:WFC', displayName: 'Wells Fargo Co New' },
                 { name: 'NYSE:BAC', displayName: 'Bank Amer Corp' },
                 { name: 'NYSE:HSBC', displayName: 'Hsbc Hldgs Plc' },
@@ -96,3 +91,8 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     compareSymbols: [],
     studies: [],
     width: '100%',
+    height: 600,
+});
+
+export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
+    symbol: symbol.toUpperCase(),
