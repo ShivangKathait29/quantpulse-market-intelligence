@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.70).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.94).
 // TODO: Apply a proper fix for this vulnerability.
-                                    <td align="center">
-                                        <a href="https://stock-market-dev.vercel.app/" style="display: inline-block; background-color: #E8BA40; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1;">
-                                            View Dashboard
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                            <!-- Disclaimer -->
-                            <div class="dark-info-box" style="background-color: #1f2937; border-radius: 6px; padding: 15px; margin-bottom: 20px; border: 1px solid #374151;">
                                 <p class="dark-text-muted" style="margin: 0; font-size: 13px; line-height: 1.4; color: #6b7280; text-align: center;">
                                     <strong>Disclaimer:</strong> This alert is for informational purposes only and should not be considered investment advice. High volume doesn't guarantee price direction. Always do your own research before making investment decisions.
                                 </p>
@@ -96,3 +86,13 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             }
             .mobile-header-padding {
                 padding: 24px 24px 12px 24px !important;
+            }
+            .mobile-text {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+            .mobile-title {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+            .mobile-button {
