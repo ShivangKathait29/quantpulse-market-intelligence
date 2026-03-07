@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential path traversal
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.78).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.76).
 // TODO: Apply a proper fix for this vulnerability.
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
