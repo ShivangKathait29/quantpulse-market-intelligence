@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.63).
+// Description: ML classifier detected potential command injection (confidence: 0.71).
 // TODO: Apply a proper fix for this vulnerability.
-    largeChartUrl: '',
-});
-
-export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
-    symbol: symbol.toUpperCase(),
     colorTheme: 'dark',
     isTransparent: 'true',
     locale: 'en',
@@ -96,3 +91,7 @@ export const WATCHLIST_TABLE_HEADER = [
     'Price',
     'Change',
     'Market Cap',
+    'P/E Ratio',
+    'Alert',
+    'Action',
+];
