@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.80).
+// Description: ML classifier detected potential path traversal (confidence: 0.73).
 // TODO: Apply a proper fix for this vulnerability.
-export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
-    allow_symbol_change: false,
-    calendar: false,
-    details: true,
-    hide_side_toolbar: true,
     hide_top_toolbar: false,
     hide_legend: false,
     hide_volume: false,
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'NVDA',
     'NFLX',
     'ORCL',
+    'CRM',
+
+    // Growing Tech Companies
+    'ADBE',
+    'INTC',
