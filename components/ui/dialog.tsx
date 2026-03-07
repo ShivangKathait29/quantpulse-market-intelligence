@@ -1,6 +1,6 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.88).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.77).
 // TODO: Apply a proper fix for this vulnerability.
 "use client"
 
