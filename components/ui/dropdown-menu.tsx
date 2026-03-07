@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.74).
+// Description: ML classifier detected potential sql injection (confidence: 0.69).
 // TODO: Apply a proper fix for this vulnerability.
-    </DropdownMenuPrimitive.CheckboxItem>
-  )
-}
-
-function DropdownMenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
   return (
@@ -95,3 +90,9 @@ function DropdownMenuSub({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />
 }
+
+function DropdownMenuSubTrigger({
+  className,
+  inset,
+  children,
+  ...props
