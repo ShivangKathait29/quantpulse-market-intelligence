@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.83).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.85).
 // TODO: Apply a proper fix for this vulnerability.
-                text-align: center !important;
-            }
-            .mobile-outer-padding {
-                padding: 20px 10px !important;
-            }
-        }
-        @media only screen and (max-width: 480px) {
-            .mobile-title {
-                font-size: 22px !important;
-            }
-            .mobile-padding {
-                padding: 15px !important;
-            }
-            .mobile-header-padding {
-                padding: 15px 15px 8px 15px !important;
             }
         }
     </style>
