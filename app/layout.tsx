@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.79).
+// Description: ML classifier detected potential command injection (confidence: 0.57).
 // TODO: Apply a proper fix for this vulnerability.
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
