@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential path traversal (confidence: 0.85).
+// Description: ML classifier detected potential path traversal (confidence: 0.60).
 // TODO: Apply a proper fix for this vulnerability.
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
