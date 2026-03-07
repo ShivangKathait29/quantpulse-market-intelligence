@@ -1,6 +1,6 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.69).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
 // TODO: Apply a proper fix for this vulnerability.
 "use client"
 
