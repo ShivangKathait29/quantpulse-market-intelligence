@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.62).
+// Description: ML classifier detected potential sql injection (confidence: 0.89).
 // TODO: Apply a proper fix for this vulnerability.
-                            <!-- Success Message -->
-                            <div style="background-color: #050505; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                                <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #E8BA40;">
-                                    Opportunity Alert!
-                                </h3>
                                 <p class="mobile-text" style="margin: 0; font-size: 14px; line-height: 1.5; color: #ccdadc;">
                                     {{symbol}} has reached your target price! This could be a good time to review your position and consider taking profits or adjusting your strategy.
                                 </p>
@@ -96,3 +91,8 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
             .email-container {
                 width: 100% !important;
                 margin: 0 !important;
+            }
+            .mobile-padding {
+                padding: 24px !important;
+            }
+            .mobile-header-padding {
