@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.89).
+// Description: ML classifier detected potential command injection (confidence: 0.80).
 // TODO: Apply a proper fix for this vulnerability.
-    locale: 'en',
-    width: '100%',
-    height: 170,
-});
-
 export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
     calendar: false,
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'MSFT',
     'GOOGL',
     'AMZN',
+    'TSLA',
+    'META',
+    'NVDA',
+    'NFLX',
+    'ORCL',
