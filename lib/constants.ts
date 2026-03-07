@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.71).
+// Description: ML classifier detected potential command injection (confidence: 0.89).
 // TODO: Apply a proper fix for this vulnerability.
-    colorTheme: 'dark',
-    isTransparent: 'true',
-    locale: 'en',
-    width: '100%',
-    height: 440,
 });
 
 export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
