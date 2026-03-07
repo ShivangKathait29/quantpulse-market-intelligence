@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.86).
+// Description: ML classifier detected potential sql injection (confidence: 0.95).
 // TODO: Apply a proper fix for this vulnerability.
-        @media only screen and (max-width: 480px) {
-            .mobile-title {
-                font-size: 22px !important;
-            }
-            .mobile-padding {
                 padding: 15px !important;
             }
             .mobile-header-padding {
@@ -96,3 +91,8 @@
                                 </p>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
                                     <strong>Spike Detected:</strong> {{volumeSpike}} above normal trading activity
+                                </p>
+                            </div>
+                            
+                            <!-- What This Means -->
+                            <div class="dark-info-box" style="background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
