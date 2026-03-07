@@ -1,22 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential SQL injection
+// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.76).
+// Description: ML classifier detected potential cross-site scripting (confidence: 0.91).
 // TODO: Apply a proper fix for this vulnerability.
-                                <li style="margin-bottom: 12px;">Explore the dashboard for trends and the latest market news</li>
-                            </ul>
-                            
-                            <!-- Additional Text -->
-                            <p class="mobile-text dark-text-secondary" style="margin: 0 0 40px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                We'll keep you informed with timely updates, insights, and alerts — so you can focus on making the right calls.
-                            </p>
-                            
-                            <!-- CTA Button -->
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 0 40px 0; width: 100%;">
-                                <tr>
-                                    <td align="center">
-                                        <a href="https://stock-market-dev.vercel.app/" style="display: block; width: 100%; background: linear-gradient(135deg, #FDD458 0%, #E8BA40 100%); color: #000000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center; box-sizing: border-box;">
-                                            Go to Dashboard
-                                        </a>
                                     </td>
                                 </tr>
                             </table>
@@ -96,3 +81,18 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 padding: 24px 24px 12px 24px !important;
             }
             .mobile-text {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+            .mobile-title {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+            .mobile-news-title {
+                font-size: 16px !important;
+                line-height: 1.3 !important;
+            }
+            .mobile-outer-padding {
+                padding: 20px 10px !important;
+            }
+        }
