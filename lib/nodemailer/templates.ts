@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.95).
+// Description: ML classifier detected potential sql injection (confidence: 0.88).
 // TODO: Apply a proper fix for this vulnerability.
-                padding: 15px !important;
-            }
-            .mobile-header-padding {
-                padding: 15px 15px 8px 15px !important;
-            }
             .mobile-volume {
                 font-size: 24px !important;
             }
@@ -96,3 +91,8 @@
                             
                             <!-- What This Means -->
                             <div class="dark-info-box" style="background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                                <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
+                                    💡 What This Means
+                                </h3>
+                                <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
+                                    High volume often indicates increased investor interest, potential news events, or significant price movements. This could signal an opportunity to investigate what's driving the activity.
