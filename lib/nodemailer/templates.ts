@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.74).
+// Description: ML classifier detected potential command injection (confidence: 0.62).
 // TODO: Apply a proper fix for this vulnerability.
-                                </h3>
-                                <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Target Price:</strong> {{targetPrice}}
-                                </p>
-                                <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
                                     <strong>Trigger:</strong> Price dropped below your lower threshold of {{targetPrice}}
                                 </p>
                             </div>
@@ -96,3 +91,8 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                 border-color: #30333A !important;
             }
             .dark-info-box {
+                background-color: #1f2937 !important;
+                border: 1px solid #374151 !important;
+            }
+        }
+        
