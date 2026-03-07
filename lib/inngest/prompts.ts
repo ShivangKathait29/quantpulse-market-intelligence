@@ -1,27 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.93).
+// Description: ML classifier detected potential sql injection (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
-- Focus on PRACTICAL insights regular people can understand and use
-- Explain what the news means for regular investors' money
-- Keep language conversational and accessible to everyone
-- Prioritize BREVITY and CLARITY over detailed explanations
-
-Example structure:
-<h3 class="mobile-news-title dark-text" style="margin: 30px 0 15px 0; font-size: 20px; font-weight: 600; color: #f8f9fa; line-height: 1.3;">📊 Market Overview</h3>
-
-<div class="dark-info-box" style="background-color: #212328; padding: 24px; margin: 20px 0; border-radius: 8px;">
-<h4 class="dark-text" style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #FDD458; line-height: 1.4;">
-Stock Market Had Mixed Results Today
-</h4>
-
-<ul style="margin: 16px 0 20px 0; padding-left: 0; margin-left: 0; list-style: none;">
-  <li class="dark-text-secondary" style="margin: 0 0 16px 0; padding: 0; margin-left: 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-    <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>Tech stocks like Apple went up 1.2% today, which is good news for tech investors.
-  </li>
-  <li class="dark-text-secondary" style="margin: 0 0 16px 0; padding: 0; margin-left: 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-    <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>Traditional companies went down 0.3%, showing investors prefer tech right now.
-  </li>
   <li class="dark-text-secondary" style="margin: 0 0 16px 0; padding: 0; margin-left: 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
     <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>High trading volume (12.4 billion shares) shows investors are confident and active.
   </li>
