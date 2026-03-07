@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// SECURITY FIX REQUIRED — ML: Potential path traversal
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.87).
+// Description: ML classifier detected potential path traversal (confidence: 0.86).
 // TODO: Apply a proper fix for this vulnerability.
-    locale: 'en',
-    market: 'stock',
-    width: '100%',
-    height: '600',
-};
 
 export const MARKET_DATA_WIDGET_CONFIG = {
     title: 'Stocks',
@@ -96,3 +91,8 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     hide_top_toolbar: false,
     hide_legend: false,
     hide_volume: false,
+    hotlist: false,
+    interval: 'D',
+    locale: 'en',
+    save_image: false,
+    style: 10,
