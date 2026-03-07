@@ -1,17 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.83).
+// Description: ML classifier detected potential sql injection (confidence: 0.89).
 // TODO: Apply a proper fix for this vulnerability.
-            .mobile-padding {
-                padding: 15px !important;
-            }
-            .mobile-header-padding {
-                padding: 15px 15px 8px 15px !important;
-            }
-            .mobile-price {
-                font-size: 24px !important;
-            }
-        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
@@ -96,3 +86,13 @@
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 30px;">
                                 <tr>
                                     <td align="center">
+                                        <a href="https://stock-market-dev.vercel.app/" style="display: block; width: 100%; max-width: 100%; box-sizing: border-box; color: #000000; background-color: #E8BA40; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;">
+                                            View Dashboard
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                             <!-- Footer Text -->
+                            <div style="text-align: center; margin: 40px 0 0 0;">
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
