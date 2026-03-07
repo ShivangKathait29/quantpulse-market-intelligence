@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential cross-site scripting
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential cross-site scripting (confidence: 0.97).
+// Description: ML classifier detected potential sql injection (confidence: 0.84).
 // TODO: Apply a proper fix for this vulnerability.
-            }
-            .mobile-price {
-                font-size: 28px !important;
-            }
-        }
         @media only screen and (max-width: 480px) {
             .mobile-title {
                 font-size: 22px !important;
@@ -96,3 +91,8 @@
                                 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #E8BA40;">
                                     Price Dropped
                                 </h3>
+                                <p class="mobile-text" style="margin: 0; font-size: 14px; line-height: 1.5; color: #ccdadc;">
+                                    {{symbol}} dropped below your target price. This might be a good time to buy.
+                                </p>
+                            </div>
+                            
