@@ -1,17 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.68).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
 // TODO: Apply a proper fix for this vulnerability.
-    timezone: 'Etc/UTC',
-    backgroundColor: '#141414',
-    gridColor: '#141414',
-    watchlist: [],
-    withdateranges: false,
-    compareSymbols: [],
-    studies: [],
-    width: '100%',
-    height: 600,
-});
 
 export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
@@ -96,3 +86,13 @@ export const POPULAR_STOCK_SYMBOLS = [
     'ROKU',
 
     // Newer Tech Companies
+    'SNOW',
+    'PLTR',
+    'COIN',
+    'RBLX',
+    'DDOG',
+    'CRWD',
+    'NET',
+    'OKTA',
+    'TWLO',
+    'ZM',
