@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.64).
+// Description: ML classifier detected potential command injection (confidence: 0.68).
 // TODO: Apply a proper fix for this vulnerability.
-}
-
-function DropdownMenuContent({
-  className,
-  sideOffset = 4,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
   return (
@@ -96,3 +91,8 @@ function DropdownMenuRadioItem({
   className,
   children,
   ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
+  return (
+    <DropdownMenuPrimitive.RadioItem
+      data-slot="dropdown-menu-radio-item"
+      className={cn(
