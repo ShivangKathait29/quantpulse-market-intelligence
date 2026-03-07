@@ -1,22 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.66).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.74).
 // TODO: Apply a proper fix for this vulnerability.
-                            
-                            <!-- Stock Info -->
-                            <div class="dark-bg" style="text-align: center; padding: 30px 20px; background-color: #050505; border-radius: 8px; margin-bottom: 30px;">
-                                <h2 class="dark-text" style="margin: 0 0 10px 0; font-size: 28px; font-weight: 700; color: #ffffff;">
-                                    {{symbol}}
-                                </h2>
-                                <p class="dark-text-muted" style="margin: 0 0 20px 0; font-size: 16px; color: #6b7280;">
-                                    {{company}}
-                                </p>
-                                
-                                <!-- Current Volume -->
-                                <div style="margin-bottom: 20px;">
-                                    <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Volume
-                                    </p>
                                     <p class="mobile-volume" style="margin: 0; font-size: 36px; font-weight: 700; color: #7c3aed;">
                                         {{currentVolume}}M
                                     </p>
@@ -96,3 +81,18 @@
                 </table>
             </td>
         </tr>
+    </table>
+</body>
+</html>`;
+
+export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>We Miss You! Your Market Insights Await</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
