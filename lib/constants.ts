@@ -2,11 +2,6 @@
 // CWE: None
 // Description: ML classifier detected potential hardcoded secret (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-    theme: 'dark',
-    timezone: 'Etc/UTC',
-    backgroundColor: '#141414',
-    gridColor: '#141414',
-    watchlist: [],
     withdateranges: false,
     compareSymbols: [],
     studies: [],
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
 
     // International Companies
     'XPEV',
+    'LI',
+    'BABA',
+    'JD',
+    'PDD',
+    'TME',
