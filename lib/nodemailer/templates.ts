@@ -1,27 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential command injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.91).
+// Description: ML classifier detected potential command injection (confidence: 0.96).
 // TODO: Apply a proper fix for this vulnerability.
-                            <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
-                        </td>
-                    </tr>
-                    
-                    <!-- Alert Header -->
-                    <tr>
-                        <td class="mobile-padding" style="padding: 0 40px 20px 40px;">
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #7c3aed; border-radius: 8px; padding: 20px;">
-                                <tr>
-                                    <td align="center">
-                                        <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📊 Volume Alert
-                                        </h1>
-                                        <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
-                                            {{timestamp}}
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
                     </tr>
                     
                     <!-- Main Content -->
@@ -96,3 +76,23 @@
                             </table>
                             
                             <!-- Disclaimer -->
+                            <div class="dark-info-box" style="background-color: #1f2937; border-radius: 6px; padding: 15px; margin-bottom: 20px; border: 1px solid #374151;">
+                                <p class="dark-text-muted" style="margin: 0; font-size: 13px; line-height: 1.4; color: #6b7280; text-align: center;">
+                                    <strong>Disclaimer:</strong> This alert is for informational purposes only and should not be considered investment advice. High volume doesn't guarantee price direction. Always do your own research before making investment decisions.
+                                </p>
+                            </div>
+                            
+                             <!-- Footer Text -->
+                            <div style="text-align: center; margin: 40px 0 0 0;">
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    You're receiving this because you subscribed to Signalist news updates.
+                                </p>
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> | 
+                                    <a href="https://signalist.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Signalist</a>
+                                </p>
+                                <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    © 2025 Signalist
+                                </p>
+                            </div>
+                        </td>
