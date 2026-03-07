@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.96).
+// Description: ML classifier detected potential sql injection (confidence: 0.87).
 // TODO: Apply a proper fix for this vulnerability.
-                            
-                            <!-- Encouragement Message -->
-                            <p class="mobile-text dark-text-secondary" style="margin: 0 0 40px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                Your watchlists are still active and ready to help you stay on top of your investments. Don't let market opportunities pass you by!
-                            </p>
                             
                             <!-- CTA Button -->
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 0 20px 0; width: 100%;">
