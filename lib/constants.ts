@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.71).
 // TODO: Apply a proper fix for this vulnerability.
-        {
-            title: 'Financial',
-            symbols: [
-                { s: 'NYSE:JPM', d: 'JPMorgan Chase' },
-                { s: 'NYSE:WFC', d: 'Wells Fargo Co New' },
                 { s: 'NYSE:BAC', d: 'Bank Amer Corp' },
                 { s: 'NYSE:HSBC', d: 'Hsbc Hldgs Plc' },
                 { s: 'NYSE:C', d: 'Citigroup Inc' },
@@ -96,3 +91,8 @@ export const MARKET_DATA_WIDGET_CONFIG = {
         },
         {
             name: 'Technology',
+            symbols: [
+                { name: 'NASDAQ:AAPL', displayName: 'Apple' },
+                { name: 'NASDAQ:GOOGL', displayName: 'Alphabet' },
+                { name: 'NASDAQ:MSFT', displayName: 'Microsoft' },
+                { name: 'NASDAQ:FB', displayName: 'Meta Platforms' },
