@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential hardcoded secret (confidence: 0.79).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.71).
 // TODO: Apply a proper fix for this vulnerability.
-
-export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
-    allow_symbol_change: false,
-    calendar: false,
-    details: false,
     hide_side_toolbar: true,
     hide_top_toolbar: false,
     hide_legend: false,
@@ -96,3 +91,8 @@ export const POPULAR_STOCK_SYMBOLS = [
     'OKTA',
     'TWLO',
     'ZM',
+
+    // Consumer & Delivery Apps
+    'DOCU',
+    'PTON',
+    'PINS',
