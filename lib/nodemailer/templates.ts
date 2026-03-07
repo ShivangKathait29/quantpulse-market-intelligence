@@ -1,12 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.73).
+// Description: ML classifier detected potential sql injection (confidence: 0.70).
 // TODO: Apply a proper fix for this vulnerability.
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="x-apple-disable-message-reformatting">
-    <title>Market News Summary Today</title>
-    <!--[if mso]>
     <noscript>
         <xml>
             <o:OfficeDocumentSettings>
@@ -96,3 +91,8 @@
                             <img src="https://ik.imagekit.io/a6fkjou7d/logo.png?updatedAt=1756378431634" alt="Signalist Logo" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
+                    
+                    <!-- Main Content -->
+                    <tr>
+                        <td class="mobile-padding" style="padding: 40px 40px 40px 40px;">
+                            
