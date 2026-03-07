@@ -1,8 +1,7 @@
-// SECURITY FIX REQUIRED — ML: Potential command injection
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
 // CWE: None
-// Description: ML classifier detected potential command injection (confidence: 0.93).
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.96).
 // TODO: Apply a proper fix for this vulnerability.
-export const NAV_ITEMS = [
     { href: '/', label: 'Dashboard' },
     { href: '/search', label: 'Search' },
     // { href: '/watchlist', label: 'Watchlist' },
@@ -82,3 +81,18 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
         },
         {
             title: 'Services',
+            symbols: [
+                { s: 'NASDAQ:AMZN', d: 'Amazon' },
+                { s: 'NYSE:BABA', d: 'Alibaba Group Hldg Ltd' },
+                { s: 'NYSE:T', d: 'At&t Inc' },
+                { s: 'NYSE:WMT', d: 'Walmart' },
+                { s: 'NYSE:V', d: 'Visa' },
+            ],
+        },
+    ],
+    support_host: 'https://www.tradingview.com', // TradingView host
+    backgroundColor: '#141414', // background color
+    width: '100%', // full width
+    height: 600, // height in px
+    showSymbolLogo: true, // show logo next to symbols
+    showChart: true, // display mini chart
