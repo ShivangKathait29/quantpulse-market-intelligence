@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential hardcoded secret
+// CWE: None
+// Description: ML classifier detected potential hardcoded secret (confidence: 0.83).
+// TODO: Apply a proper fix for this vulnerability.
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -43,7 +47,7 @@ const SignIn = () => {
                 <InputField
                     name="email"
                     label="Email"
-                    placeholder="Enter your email"
+                    placeholder="contact@jsmastery.com"
                     register={register}
                     error={errors.email}
                     validation={{ required: 'Email is required', pattern: /^\w+@\w+\.\w+$/ }}
