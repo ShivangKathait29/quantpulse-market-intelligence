@@ -1,3 +1,7 @@
+// SECURITY FIX REQUIRED — ML: Potential path traversal
+// CWE: None
+// Description: ML classifier detected potential path traversal (confidence: 0.76).
+// TODO: Apply a proper fix for this vulnerability.
 import TradingViewWidget from "@/components/TradingViewWidget";
 import {
     HEATMAP_WIDGET_CONFIG,
