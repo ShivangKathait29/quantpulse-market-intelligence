@@ -1,12 +1,7 @@
 // SECURITY FIX REQUIRED — ML: Potential SQL injection
 // CWE: None
-// Description: ML classifier detected potential sql injection (confidence: 0.88).
+// Description: ML classifier detected potential sql injection (confidence: 0.83).
 // TODO: Apply a proper fix for this vulnerability.
-            .mobile-price {
-                font-size: 24px !important;
-            }
-        }
-    </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #050505;">
@@ -96,3 +91,8 @@
                                     </td>
                                 </tr>
                             </table>
+                            
+                             <!-- Footer Text -->
+                            <div style="text-align: center; margin: 40px 0 0 0;">
+                                <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
+                                    You're receiving this because you subscribed to Signalist news updates.
