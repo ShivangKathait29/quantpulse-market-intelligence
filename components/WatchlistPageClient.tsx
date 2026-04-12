@@ -66,20 +66,27 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
         setIsAlertDialogOpen(true);
     };
 
-    const handleCreateAlert = () => {
-        if (!selectedStock || !alertPrice) return;
+    const handleCreateAlert = async () => {
+        if (!selectedStock || !alertPrice || parseFloat(alertPrice) <= 0) return;
         
-        const newAlert: AlertItem = {
-            id: Date.now().toString(),
-            symbol: selectedStock.symbol,
-            company: selectedStock.company,
-            currentPrice: selectedStock.price,
-            threshold: parseFloat(alertPrice),
-            alertType,
-            frequency: frequency === "once" ? "Once per day" : frequency === "hourly" ? "Once per hour" : "Every time"
-        };
-
-        setAlerts([...alerts, newAlert]);
+        setIsLoading(true);
+        try {
+            await createAlert(
+                userEmail,
+                selectedStock.symbol,
+                selectedStock.company,
+                alertType,
+                parseFloat(alertPrice),
+                frequency as 'once' | 'hourly' | 'continuous'
+            );
+            toast.success(`Alert created for ${selectedStock.symbol}!`);
+            await loadAlerts();
+        } catch (error) {
+            console.error('Failed to create alert:', error);
+            toast.error('Failed to create alert');
+        } finally {
+            setIsLoading(false);
+        }
 
         // Close dialog and reset
         setIsAlertDialogOpen(false);
