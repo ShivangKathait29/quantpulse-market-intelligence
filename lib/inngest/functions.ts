@@ -1,7 +1,7 @@
 import {inngest} from "@/lib/inngest/client";
 import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/lib/inngest/prompts";
 import {sendNewsSummaryEmail, sendWelcomeEmail, sendEmail} from "@/lib/nodemailer";
-import {getAllUsersForNewsEmail, getUserByEmail} from "@/lib/actions/user.actions";
+import {getAllUsersForNewsEmail, getUserById} from "@/lib/actions/user.actions";
 import {getWatchlistSymbolsByEmail} from "@/lib/actions/watchlist.actions";
 import {getNews, getQuote} from "@/lib/actions/finnhub.actions";
 import {getFormattedTodayDate} from "@/lib/utils";
@@ -169,8 +169,8 @@ export const checkPriceAlerts = inngest.createFunction(
                         }
                     }
 
-                    // Get user email
-                    const user = await getUserByEmail(alert.userId);
+                    // Get user email by their ID
+                    const user = await getUserById(alert.userId);
                     if (!user?.email) continue;
 
                     // Send email
