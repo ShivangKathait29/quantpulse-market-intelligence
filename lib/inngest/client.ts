@@ -1,6 +1,6 @@
 import { Inngest} from "inngest";
 
 export const inngest = new Inngest({
-    id: 'quantpulse',
+    id: 'signalist',
     ai: { gemini: { apiKey: process.env.GEMINI_API_KEY! }}
 })
