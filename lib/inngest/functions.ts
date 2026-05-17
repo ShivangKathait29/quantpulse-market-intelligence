@@ -10,8 +10,7 @@ import {PRICE_ALERT_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 import PriceAlert from "@/database/models/alert.model";
 
 export const sendSignUpEmail = inngest.createFunction(
-    { id: 'sign-up-email' },
-    { event: 'app/user.created'},
+    { id: 'sign-up-email', triggers: [{ event: 'app/user.created' }] },
     async ({ event, step }) => {
         const userProfile = `
             - Country: ${event.data.country}
@@ -49,8 +48,7 @@ export const sendSignUpEmail = inngest.createFunction(
         })
 
 export const sendDailyNewsSummary = inngest.createFunction(
-    { id: 'daily-news-summary' },
-    [ { event: 'app/send.daily.news' }, { cron: '0 12 * * *' } ],
+    { id: 'daily-news-summary', triggers: [ { event: 'app/send.daily.news' }, { cron: '0 12 * * *' } ] },
     async ({ step }) => {
         // Step #1: Get all users for news delivery
         const users = await step.run('get-all-users', getAllUsersForNewsEmail);
@@ -126,8 +124,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
 );
 
 export const checkPriceAlerts = inngest.createFunction(
-    { id: 'check-price-alerts' },
-    { cron: '*/5 * * * *' }, // Run every 5 minutes
+    { id: 'check-price-alerts', triggers: [{ cron: '*/5 * * * *' }] }, // Run every 5 minutes
     async ({ step }) => {
         // Step 1: Get all active alerts
         const alerts = await step.run('get-active-alerts', getActiveAlerts);
