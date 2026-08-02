@@ -17,7 +17,6 @@ import { toast } from "sonner";
 
 interface WatchlistPageClientProps {
     stocks: WatchlistStockDetails[];
-    userEmail: string;
     initialStocks: StockWithWatchlistStatus[];
     news: MarketNewsArticle[];
 }
@@ -32,7 +31,7 @@ interface AlertItem {
     frequency: string;
 }
 
-export default function WatchlistPageClient({ stocks, userEmail, initialStocks, news }: WatchlistPageClientProps) {
+export default function WatchlistPageClient({ stocks, initialStocks, news }: WatchlistPageClientProps) {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const [selectedStock, setSelectedStock] = useState<WatchlistStockDetails | null>(null);
     const [alertPrice, setAlertPrice] = useState("");
@@ -47,7 +46,7 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
 
     const loadAlerts = async () => {
         try {
-            const userAlerts = await getUserAlerts(userEmail);
+            const userAlerts = await getUserAlerts();
             setAlerts(userAlerts as AlertItem[]);
         } catch (error) {
             console.error('Failed to load alerts:', error);
@@ -72,7 +71,6 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
         setIsLoading(true);
         try {
             await createAlert(
-                userEmail,
                 selectedStock.symbol,
                 selectedStock.company,
                 alertType,
@@ -128,7 +126,6 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
                                 renderAs="button"
                                 label="Add Stock"
                                 initialStocks={initialStocks}
-                                userEmail={userEmail}
                             />
                         </div>
 
@@ -158,7 +155,6 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
                                                         symbol={stock.symbol}
                                                         company={stock.company}
                                                         isInWatchlist={true}
-                                                        userEmail={userEmail}
                                                         type="icon"
                                                     />
                                                     <Link 

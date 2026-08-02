@@ -2,9 +2,10 @@
 
 import { connectToDatabase } from "@/database/mongoose";
 import Alert from "@/database/models/alert.model";
+import { auth } from "@/lib/better-auth/auth";
+import { headers } from "next/headers";
 
 export async function createAlert(
-  email: string,
   symbol: string,
   company: string,
   alertType: 'upper' | 'lower',
@@ -12,6 +13,10 @@ export async function createAlert(
   frequency: 'once' | 'hourly' | 'continuous'
 ) {
   try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !session.user) throw new Error('Unauthorized');
+    const email = session.user.email;
+
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
     if (!db) throw new Error('Mongoose connection not connected');
@@ -20,6 +25,19 @@ export async function createAlert(
     if (!user) throw new Error('User not found');
 
     const userId = user.id || user._id?.toString();
+
+    // Check for existing duplicate alert
+    const existingAlert = await Alert.findOne({
+      userId,
+      symbol: symbol.toUpperCase(),
+      alertType,
+      targetPrice,
+      isActive: true,
+    });
+
+    if (existingAlert) {
+      throw new Error('An identical active alert already exists for this symbol and price threshold.');
+    }
 
     const alert = await Alert.create({
       userId,
@@ -38,8 +56,12 @@ export async function createAlert(
   }
 }
 
-export async function getUserAlerts(email: string) {
+export async function getUserAlerts() {
   try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !session.user) throw new Error('Unauthorized');
+    const email = session.user.email;
+
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
     if (!db) throw new Error('Mongoose connection not connected');

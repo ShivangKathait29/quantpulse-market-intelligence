@@ -14,10 +14,9 @@ import {
 
 interface WatchlistDashboardProps {
     symbols: string[];
-    userEmail: string;
 }
 
-export default function WatchlistDashboard({ symbols, userEmail }: WatchlistDashboardProps) {
+export default function WatchlistDashboard({ symbols }: WatchlistDashboardProps) {
     const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
 
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
@@ -57,7 +56,6 @@ export default function WatchlistDashboard({ symbols, userEmail }: WatchlistDash
                                                             symbol={symbol}
                                                             company={symbol}
                                                             isInWatchlist={true}
-                                                            userEmail={userEmail}
                                                             type="icon"
                                                         />
                                                     </div>
@@ -150,7 +148,6 @@ export default function WatchlistDashboard({ symbols, userEmail }: WatchlistDash
                                                     symbol={selectedSymbol}
                                                     company={selectedSymbol}
                                                     isInWatchlist={true}
-                                                    userEmail={userEmail}
                                                     showTrashIcon
                                                 />
                                             </div>

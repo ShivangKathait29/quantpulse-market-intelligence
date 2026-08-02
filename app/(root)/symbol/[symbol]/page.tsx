@@ -11,13 +11,28 @@ import {
 import { auth } from "@/lib/better-auth/auth";
 import { headers } from "next/headers";
 import { isSymbolInWatchlist } from "@/lib/actions/watchlist.actions";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: StockDetailsPageProps): Promise<Metadata> {
+    const { symbol } = await params;
+    const cleanSymbol = symbol.toUpperCase();
+    return {
+        title: `${cleanSymbol} — QuantPulse`,
+        description: `Detailed market intelligence, charts, and financial analysis for ${cleanSymbol}.`
+    };
+}
 
 export default async function StockDetails({ params }: StockDetailsPageProps) {
     const { symbol } = await params;
-    const session = await auth.api.getSession({ headers: await headers() });
-    const userEmail = session?.user?.email;
 
-    const isInWatchlist = userEmail ? await isSymbolInWatchlist(userEmail, symbol.toUpperCase()) : false;
+    // Validate symbol (alphanumeric, dots, dashes)
+    if (!/^[A-Z0-9.-]+$/i.test(symbol)) {
+        notFound();
+    }
+
+    const session = await auth.api.getSession({ headers: await headers() });
+    const isInWatchlist = session?.user ? await isSymbolInWatchlist(symbol.toUpperCase()) : false;
 
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
 
@@ -54,13 +69,11 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
                             symbol={symbol.toUpperCase()} 
                             company={symbol.toUpperCase()} 
                             isInWatchlist={isInWatchlist} 
-                            userEmail={userEmail}
                         />
                         <WatchlistButton 
                             symbol={symbol.toUpperCase()} 
                             company={symbol.toUpperCase()} 
                             isInWatchlist={isInWatchlist} 
-                            userEmail={userEmail}
                             type="icon"
                         />
                     </div>

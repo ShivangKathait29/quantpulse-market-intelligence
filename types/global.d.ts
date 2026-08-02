@@ -59,7 +59,6 @@ declare global {
         renderAs?: 'button' | 'text';
         label?: string;
         initialStocks: StockWithWatchlistStatus[];
-        userEmail?: string;
         open?: boolean;
         setOpen?: (open: boolean) => void;
         buttonLabel?: string;
@@ -114,7 +113,6 @@ declare global {
         isInWatchlist: boolean;
         showTrashIcon?: boolean;
         type?: 'button' | 'icon';
-        userEmail?: string;
         onWatchlistChange?: (symbol: string, isAdded: boolean) => void;
     };
 

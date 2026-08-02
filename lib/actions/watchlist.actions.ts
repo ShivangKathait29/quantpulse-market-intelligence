@@ -2,11 +2,17 @@
 
 import { connectToDatabase } from "@/database/mongoose";
 import Watchlist from "@/database/models/watchlist.model";
+import { auth } from "@/lib/better-auth/auth";
+import { headers } from "next/headers";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
-export async function getWatchlistSymbolsByEmail(email: string): Promise<string[]> {
+export async function getWatchlistSymbolsByEmail(): Promise<string[]> {
   try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !session.user) throw new Error('Unauthorized');
+    const email = session.user.email;
+
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
     if (!db) throw new Error('Mongoose connection not connected');
@@ -25,14 +31,18 @@ export async function getWatchlistSymbolsByEmail(email: string): Promise<string[
 
     return watchlistItems.map((item) => item.symbol);
   } catch (error) {
-    console.error(`Error fetching watchlist for ${email}:`, error);
+    console.error(`Error fetching watchlist for user:`, error);
     return [];
   }
 }
 
-export async function getWatchlistWithDetails(email: string): Promise<WatchlistStockDetails[]> {
+export async function getWatchlistWithDetails(): Promise<WatchlistStockDetails[]> {
   try {
-    const symbols = await getWatchlistSymbolsByEmail(email);
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !session.user) throw new Error('Unauthorized');
+    const email = session.user.email;
+
+    const symbols = await getWatchlistSymbolsByEmail();
     
     if (symbols.length === 0) {
       return [];
@@ -82,13 +92,17 @@ export async function getWatchlistWithDetails(email: string): Promise<WatchlistS
 
     return stockDetails;
   } catch (error) {
-    console.error(`Error fetching watchlist details for ${email}:`, error);
+    console.error(`Error fetching watchlist details for user:`, error);
     return [];
   }
 }
 
-export async function toggleWatchlist(email: string, symbol: string, company: string, isAdded: boolean) {
+export async function toggleWatchlist(symbol: string, company: string, isAdded: boolean) {
   try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !session.user) throw new Error('Unauthorized');
+    const email = session.user.email;
+
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
     if (!db) throw new Error('Mongoose connection not connected');
@@ -108,13 +122,17 @@ export async function toggleWatchlist(email: string, symbol: string, company: st
       await Watchlist.deleteOne({ userId, symbol });
     }
   } catch (error) {
-    console.error(`Error toggling watchlist for ${email}:`, error);
+    console.error(`Error toggling watchlist for user:`, error);
     throw error;
   }
 }
 
-export async function isSymbolInWatchlist(email: string, symbol: string): Promise<boolean> {
+export async function isSymbolInWatchlist(symbol: string): Promise<boolean> {
     try {
+        const session = await auth.api.getSession({ headers: await headers() });
+        if (!session || !session.user) throw new Error('Unauthorized');
+        const email = session.user.email;
+
         const mongoose = await connectToDatabase();
         const db = mongoose.connection.db;
         if (!db) throw new Error('Mongoose connection not connected');
@@ -127,7 +145,7 @@ export async function isSymbolInWatchlist(email: string, symbol: string): Promis
         const count = await Watchlist.countDocuments({ userId, symbol });
         return count > 0;
     } catch (error) {
-        console.error(`Error checking watchlist for ${email}:`, error);
+        console.error(`Error checking watchlist for user:`, error);
         return false;
     }
 }

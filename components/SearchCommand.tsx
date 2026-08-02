@@ -9,7 +9,7 @@ import {searchStocks} from "@/lib/actions/finnhub.actions";
 import {useDebouncedValue} from "@/hooks/useDebouncedValue";
 import WatchlistButton from "@/components/WatchlistButton";
 
-export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks, userEmail }: SearchCommandProps) {
+export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
@@ -124,7 +124,6 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
                             symbol={stock.symbol}
                             company={stock.name}
                             isInWatchlist={stock.isInWatchlist}
-                            userEmail={userEmail}
                             type="icon"
                           />
                         </div>

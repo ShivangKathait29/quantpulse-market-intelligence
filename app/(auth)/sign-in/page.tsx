@@ -6,10 +6,12 @@ import InputField from '@/components/forms/InputField';
 import FooterLink from '@/components/forms/FooterLink';
 import {signInWithEmail, signUpWithEmail} from "@/lib/actions/auth.actions";
 import {toast} from "sonner";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 
 const SignIn = () => {
-    const router = useRouter()
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get('callbackUrl') || '/';
     const {
         register,
         handleSubmit,
@@ -26,7 +28,7 @@ const SignIn = () => {
         try {
             const result = await signInWithEmail(data);
             if(result.success) {
-                router.push('/');
+                router.push(callbackUrl);
             } else {
                 toast.error('Sign in failed', {
                     description: result.error || 'Failed to sign in.'

@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 const WatchlistButton = ({
                              symbol,
                              company,
-                             userEmail,
                              isInWatchlist,
                              showTrashIcon = false,
                              type = "button",
@@ -29,11 +28,6 @@ const WatchlistButton = ({
     }, [added, type]);
 
     const handleClick = async () => {
-        if (!userEmail) {
-            router.push('/sign-in');
-            return;
-        }
-
         const next = !added;
         
         // Optimistic UI update
@@ -41,7 +35,7 @@ const WatchlistButton = ({
 
         startTransition(async () => {
             try {
-                await toggleWatchlist(userEmail, symbol, company, next);
+                await toggleWatchlist(symbol, company, next);
                 onWatchlistChange?.(symbol, next);
                 router.refresh();
             } catch (error) {

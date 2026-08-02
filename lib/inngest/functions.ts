@@ -2,8 +2,10 @@ import {inngest} from "@/lib/inngest/client";
 import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/lib/inngest/prompts";
 import {sendNewsSummaryEmail, sendWelcomeEmail, sendEmail} from "@/lib/nodemailer";
 import {getAllUsersForNewsEmail, getUserById} from "@/lib/actions/user.actions";
-import {getWatchlistSymbolsByEmail} from "@/lib/actions/watchlist.actions";
+
 import {getNews, getQuote} from "@/lib/actions/finnhub.actions";
+import { connectToDatabase } from "@/database/mongoose";
+import Watchlist from "@/database/models/watchlist.model";
 import {getFormattedTodayDate} from "@/lib/utils";
 import {getActiveAlerts} from "@/lib/actions/alert.actions";
 import {PRICE_ALERT_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
@@ -62,7 +64,18 @@ export const sendDailyNewsSummary = inngest.createFunction(
             const perUser: Array<{ user: { id: string; email: string; name: string }; articles: MarketNewsArticle[] }> = [];
             for (const user of users) {
                 try {
-                    const symbols = await getWatchlistSymbolsByEmail(user.email);
+                    const mongooseInstance = await connectToDatabase();
+                    const db = mongooseInstance.connection.db; 
+                    if (!db) throw new Error('DB not connected');
+                    
+                    const u = await db.collection('user').findOne({ email: user.email });
+                    let symbols: string[] = [];
+                    if (u) {
+                        const userId = u.id || u._id?.toString();
+                        const items = await Watchlist.find({ userId }).select('symbol');
+                        symbols = items.map((i: any) => i.symbol);
+                    }
+                    
                     let articles = await getNews(symbols);
                     
                     // Enforce max 6 articles per user
