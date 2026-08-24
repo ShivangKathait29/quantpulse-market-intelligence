@@ -1,6 +1,8 @@
 'use client';
 
 import {useForm} from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpSchema } from "@/lib/validations";
 import {Button} from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
 import SelectField from "@/components/forms/SelectField";
@@ -19,6 +21,7 @@ const SignUp = () => {
         control,
         formState: { errors, isSubmitting },
     } = useForm<SignUpFormData>({
+        resolver: zodResolver(signUpSchema),
         defaultValues: {
             fullName: '',
             email: '',

@@ -2,8 +2,7 @@
 
 import { connectToDatabase } from "@/database/mongoose";
 import Alert from "@/database/models/alert.model";
-import { auth } from "@/lib/better-auth/auth";
-import { headers } from "next/headers";
+import { requireSession } from "@/lib/better-auth/require-session";
 
 export async function createAlert(
   symbol: string,
@@ -13,18 +12,7 @@ export async function createAlert(
   frequency: 'once' | 'hourly' | 'continuous'
 ) {
   try {
-    const session = await auth.api.getSession({ headers: await headers() });
-    if (!session || !session.user) throw new Error('Unauthorized');
-    const email = session.user.email;
-
-    const mongoose = await connectToDatabase();
-    const db = mongoose.connection.db;
-    if (!db) throw new Error('Mongoose connection not connected');
-
-    const user = await db.collection('user').findOne({ email });
-    if (!user) throw new Error('User not found');
-
-    const userId = user.id || user._id?.toString();
+    const { userId } = await requireSession();
 
     // Check for existing duplicate alert
     const existingAlert = await Alert.findOne({
@@ -58,18 +46,7 @@ export async function createAlert(
 
 export async function getUserAlerts() {
   try {
-    const session = await auth.api.getSession({ headers: await headers() });
-    if (!session || !session.user) throw new Error('Unauthorized');
-    const email = session.user.email;
-
-    const mongoose = await connectToDatabase();
-    const db = mongoose.connection.db;
-    if (!db) throw new Error('Mongoose connection not connected');
-
-    const user = await db.collection('user').findOne({ email });
-    if (!user) return [];
-
-    const userId = user.id || user._id?.toString();
+    const { userId } = await requireSession();
 
     const alerts = await Alert.find({ userId, isActive: true }).sort({ createdAt: -1 });
 
@@ -90,8 +67,18 @@ export async function getUserAlerts() {
 
 export async function deleteAlert(alertId: string) {
   try {
-    await connectToDatabase();
-    await Alert.findByIdAndUpdate(alertId, { isActive: false });
+    const { userId } = await requireSession();
+
+    // Scope the update to BOTH alertId AND userId — this is the ownership check.
+    // If the alert belongs to a different user, the query matches nothing and
+    // result is null, so we throw instead of silently succeeding.
+    const result = await Alert.findOneAndUpdate(
+      { _id: alertId, userId },
+      { isActive: false }
+    );
+
+    if (!result) throw new Error('Alert not found or not owned by this user');
+
     return { success: true };
   } catch (error) {
     console.error('Error deleting alert:', error);

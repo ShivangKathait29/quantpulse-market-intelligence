@@ -4,8 +4,15 @@ import {auth} from "@/lib/better-auth/auth";
 import {inngest} from "@/lib/inngest/client";
 import {headers} from "next/headers";
 
-export const signUpWithEmail = async ({ email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry }: SignUpFormData) => {
+import { signInSchema, signUpSchema } from "@/lib/validations";
+
+export const signUpWithEmail = async (data: SignUpFormData) => {
     try {
+        const validated = signUpSchema.safeParse(data);
+        if (!validated.success) {
+            return { success: false, error: "Invalid data provided" };
+        }
+        const { email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry } = validated.data;
         const response = await auth.api.signUpEmail({ 
             body: { email, password, name: fullName },
             headers: await headers()
@@ -25,8 +32,13 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
     }
 }
 
-export const signInWithEmail = async ({ email, password }: SignInFormData) => {
+export const signInWithEmail = async (data: SignInFormData) => {
     try {
+        const validated = signInSchema.safeParse(data);
+        if (!validated.success) {
+            return { success: false, error: "Invalid data provided" };
+        }
+        const { email, password } = validated.data;
         const response = await auth.api.signInEmail({ 
             body: { email, password },
             headers: await headers()
