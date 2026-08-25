@@ -143,11 +143,13 @@ export const checkPriceAlerts = inngest.createFunction(
     { cron: '*/5 * * * *' }, // Run every 5 minutes
     async ({ step }) => {
         // Step 1: Get all active alerts
-        const alerts = await step.run('get-active-alerts', getActiveAlerts);
+        const result = await step.run('get-active-alerts', getActiveAlerts);
 
-        if (!alerts || alerts.length === 0) {
+        if (!result.success || result.data.length === 0) {
             return { success: true, message: 'No active alerts to check' };
         }
+
+        const alerts = result.data;
 
         // Step 2: Check prices and send alerts
         const results = await step.run('check-and-send-alerts', async () => {

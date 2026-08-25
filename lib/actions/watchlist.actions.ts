@@ -6,7 +6,7 @@ import { requireSession } from "@/lib/better-auth/require-session";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
-export async function getWatchlistSymbolsByEmail(): Promise<string[]> {
+export async function getWatchlistSymbolsByEmail() {
   try {
     const { userId } = await requireSession();
 
@@ -17,27 +17,31 @@ export async function getWatchlistSymbolsByEmail(): Promise<string[]> {
     // Query the Watchlist by userId, return just the symbols as strings
     const watchlistItems = await Watchlist.find({ userId }).select('symbol');
 
-    return watchlistItems.map((item) => item.symbol);
+    return { success: true as const, data: watchlistItems.map((item) => item.symbol) };
   } catch (error) {
     console.error(`Error fetching watchlist for user:`, error);
-    return [];
+    return { success: false as const, error: 'Failed to fetch watchlist symbols' };
   }
 }
 
-export async function getWatchlistWithDetails(): Promise<WatchlistStockDetails[]> {
+export async function getWatchlistWithDetails() {
   try {
     const { userId: _ } = await requireSession(); // ensures caller is authenticated
 
-    const symbols = await getWatchlistSymbolsByEmail();
+    const symbolsResult = await getWatchlistSymbolsByEmail();
+    if (!symbolsResult.success) {
+      return { success: false as const, error: symbolsResult.error };
+    }
+    const symbols = symbolsResult.data;
     
     if (symbols.length === 0) {
-      return [];
+      return { success: true as const, data: [] as WatchlistStockDetails[] };
     }
 
     const token = process.env.FINNHUB_API_KEY ?? process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
     if (!token) {
       console.error('FINNHUB API key not configured');
-      return [];
+      return { success: false as const, error: 'API key not configured' };
     }
 
     // Fetch quote and profile data for each symbol
@@ -76,10 +80,10 @@ export async function getWatchlistWithDetails(): Promise<WatchlistStockDetails[]
       })
     );
 
-    return stockDetails;
+    return { success: true as const, data: stockDetails };
   } catch (error) {
     console.error(`Error fetching watchlist details for user:`, error);
-    return [];
+    return { success: false as const, error: 'Failed to fetch watchlist details' };
   }
 }
 

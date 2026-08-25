@@ -46,10 +46,19 @@ export default function WatchlistPageClient({ stocks, initialStocks, news }: Wat
 
     const loadAlerts = async () => {
         try {
-            const userAlerts = await getUserAlerts();
-            setAlerts(userAlerts as AlertItem[]);
+            const result = await getUserAlerts();
+            if (result.success) {
+                setAlerts(result.data as AlertItem[]);
+            } else {
+                toast.error('Failed to load alerts', {
+                    description: result.error
+                });
+            }
         } catch (error) {
             console.error('Failed to load alerts:', error);
+            toast.error('Failed to load alerts', {
+                description: 'An unexpected error occurred'
+            });
         }
     };
 

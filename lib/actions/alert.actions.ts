@@ -50,7 +50,7 @@ export async function getUserAlerts() {
 
     const alerts = await Alert.find({ userId, isActive: true }).sort({ createdAt: -1 });
 
-    return alerts.map(alert => ({
+    return { success: true as const, data: alerts.map(alert => ({
       id: alert._id.toString(),
       symbol: alert.symbol,
       company: alert.company,
@@ -58,10 +58,10 @@ export async function getUserAlerts() {
       threshold: alert.targetPrice,
       frequency: alert.frequency === 'once' ? 'Once per day' : alert.frequency === 'hourly' ? 'Once per hour' : 'Every time',
       currentPrice: 0, // Will be populated by client
-    }));
+    })) };
   } catch (error) {
     console.error('Error fetching alerts:', error);
-    return [];
+    return { success: false as const, error: 'Failed to fetch alerts' };
   }
 }
 
@@ -90,9 +90,9 @@ export async function getActiveAlerts() {
   try {
     await connectToDatabase();
     const alerts = await Alert.find({ isActive: true });
-    return alerts;
+    return { success: true as const, data: alerts };
   } catch (error) {
     console.error('Error fetching active alerts:', error);
-    return [];
+    return { success: false as const, error: 'Failed to fetch active alerts' };
   }
 }

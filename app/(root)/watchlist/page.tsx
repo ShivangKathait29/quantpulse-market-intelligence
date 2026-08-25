@@ -10,11 +10,13 @@ export default async function WatchlistPage() {
     const session = await auth.api.getSession({ headers: await headers() });
     if (!session?.user) redirect('/sign-in');
 
-    const [stocks, initialStocks, news] = await Promise.all([
+    const [stocksResult, initialStocks, news] = await Promise.all([
         getWatchlistWithDetails(),
         searchStocks(),
         getNews()
     ]);
+
+    const stocks = stocksResult.success ? stocksResult.data : [];
 
     return <WatchlistPageClient 
         stocks={stocks} 
