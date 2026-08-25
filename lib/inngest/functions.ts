@@ -7,7 +7,7 @@ import {getNews, getQuote} from "@/lib/actions/finnhub.actions";
 import { connectToDatabase } from "@/database/mongoose";
 import Watchlist from "@/database/models/watchlist.model";
 import {getFormattedTodayDate} from "@/lib/utils";
-import {getActiveAlerts} from "@/lib/actions/alert.actions";
+import { getActiveAlerts } from "@/lib/internal/alert.internal";
 import {PRICE_ALERT_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 import PriceAlert from "@/database/models/alert.model";
 

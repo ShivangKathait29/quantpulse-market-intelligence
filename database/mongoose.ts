@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import { env } from "@/lib/config/env";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = env.MONGODB_URI;
 
 declare global {
     var mongooseCache: {
@@ -31,6 +32,6 @@ export const connectToDatabase = async () => {
         throw err;
     }
 
-    console.log(`Connected to database in ${process.env.NODE_ENV} environment`);
+    console.log(`Connected to database in ${env.NODE_ENV} environment`);
     return cached.conn;
 }

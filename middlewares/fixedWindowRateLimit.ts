@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { env } from "@/lib/config/env";
 
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 const LIMIT = 100;
@@ -6,7 +7,7 @@ const WINDOW_MS = 60_000;
 
 export function rateLimitMiddleware(request: NextRequest): NextResponse | null {
     // DO NOT rely on in-memory maps in production serverless environments.
-    if (process.env.NODE_ENV === 'production') {
+    if (env.NODE_ENV === 'production') {
         // TODO: Implement distributed rate limiting (e.g. @upstash/ratelimit)
         return null;
     }

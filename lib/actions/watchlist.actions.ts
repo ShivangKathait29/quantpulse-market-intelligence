@@ -3,6 +3,8 @@
 import { connectToDatabase } from "@/database/mongoose";
 import Watchlist from "@/database/models/watchlist.model";
 import { requireSession } from "@/lib/better-auth/require-session";
+import { DatabaseError, toUserMessage } from "@/lib/errors";
+import { env } from "@/lib/config/env";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
@@ -12,7 +14,7 @@ export async function getWatchlistSymbolsByEmail() {
 
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
-    if (!db) throw new Error('Mongoose connection not connected');
+    if (!db) throw new DatabaseError('Mongoose connection not connected');
 
     // Query the Watchlist by userId, return just the symbols as strings
     const watchlistItems = await Watchlist.find({ userId }).select('symbol');
@@ -20,7 +22,7 @@ export async function getWatchlistSymbolsByEmail() {
     return { success: true as const, data: watchlistItems.map((item) => item.symbol) };
   } catch (error) {
     console.error(`Error fetching watchlist for user:`, error);
-    return { success: false as const, error: 'Failed to fetch watchlist symbols' };
+    return { success: false as const, error: toUserMessage(error) };
   }
 }
 
@@ -38,7 +40,7 @@ export async function getWatchlistWithDetails() {
       return { success: true as const, data: [] as WatchlistStockDetails[] };
     }
 
-    const token = process.env.FINNHUB_API_KEY ?? process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = env.FINNHUB_TOKEN;
     if (!token) {
       console.error('FINNHUB API key not configured');
       return { success: false as const, error: 'API key not configured' };

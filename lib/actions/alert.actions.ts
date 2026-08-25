@@ -3,6 +3,7 @@
 import { connectToDatabase } from "@/database/mongoose";
 import Alert from "@/database/models/alert.model";
 import { requireSession } from "@/lib/better-auth/require-session";
+import { DatabaseError, ValidationError, toUserMessage } from "@/lib/errors";
 
 export async function createAlert(
   symbol: string,
@@ -24,7 +25,7 @@ export async function createAlert(
     });
 
     if (existingAlert) {
-      throw new Error('An identical active alert already exists for this symbol and price threshold.');
+      throw new ValidationError('An identical active alert already exists for this symbol and price threshold.');
     }
 
     const alert = await Alert.create({
@@ -37,10 +38,10 @@ export async function createAlert(
       isActive: true,
     });
 
-    return { success: true, alertId: alert._id.toString() };
+    return { success: true as const, alertId: alert._id.toString() };
   } catch (error) {
     console.error('Error creating alert:', error);
-    throw error;
+    return { success: false as const, error: toUserMessage(error) };
   }
 }
 
@@ -77,22 +78,12 @@ export async function deleteAlert(alertId: string) {
       { isActive: false }
     );
 
-    if (!result) throw new Error('Alert not found or not owned by this user');
+    if (!result) throw new ValidationError('Alert not found or not owned by this user');
 
-    return { success: true };
+    return { success: true as const };
   } catch (error) {
     console.error('Error deleting alert:', error);
-    throw error;
+    return { success: false as const, error: toUserMessage(error) };
   }
 }
 
-export async function getActiveAlerts() {
-  try {
-    await connectToDatabase();
-    const alerts = await Alert.find({ isActive: true });
-    return { success: true as const, data: alerts };
-  } catch (error) {
-    console.error('Error fetching active alerts:', error);
-    return { success: false as const, error: 'Failed to fetch active alerts' };
-  }
-}

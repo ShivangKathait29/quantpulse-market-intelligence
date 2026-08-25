@@ -1,4 +1,3 @@
-'use server';
 
 import {connectToDatabase} from "@/database/mongoose";
 import {ObjectId} from "mongodb";

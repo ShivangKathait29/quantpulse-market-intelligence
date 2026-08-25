@@ -1,6 +1,7 @@
 import { Inngest} from "inngest";
+import { env } from "@/lib/config/env";
 
 export const inngest = new Inngest({
     id: 'signalist',
-    ai: { gemini: { apiKey: process.env.GEMINI_API_KEY! }}
+    ai: { gemini: { apiKey: env.GEMINI_API_KEY }}
 })

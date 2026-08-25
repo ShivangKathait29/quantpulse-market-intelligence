@@ -3,9 +3,10 @@
 import { getDateRange, validateArticle, formatArticle } from '@/lib/utils';
 import { POPULAR_STOCK_SYMBOLS } from '@/lib/constants';
 import { cache } from 'react';
+import { ExternalApiError } from '@/lib/errors';
+import { env } from "@/lib/config/env";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
-const NEXT_PUBLIC_FINNHUB_API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
 
 async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T> {
   const options: RequestInit & { next?: { revalidate?: number } } = revalidateSeconds
@@ -15,7 +16,7 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
   const res = await fetch(url, options);
   if (!res.ok) {
     const text = await res.text().catch(() => '');
-    throw new Error(`Fetch failed ${res.status}: ${text}`);
+    throw new ExternalApiError(`Fetch failed ${res.status}: ${text}`, res.status);
   }
   return (await res.json()) as T;
 }
@@ -24,7 +25,7 @@ export { fetchJSON };
 
 export async function getQuote(symbol: string): Promise<FinnhubQuote | null> {
   try {
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = env.FINNHUB_TOKEN;
     if (!token) {
       throw new Error('FINNHUB API key is not configured');
     }
@@ -40,7 +41,7 @@ export async function getQuote(symbol: string): Promise<FinnhubQuote | null> {
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
   try {
     const range = getDateRange(5);
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = env.FINNHUB_TOKEN;
     if (!token) {
       throw new Error('FINNHUB API key is not configured');
     }
@@ -115,7 +116,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
 
 export const searchStocks = cache(async (query?: string): Promise<StockWithWatchlistStatus[]> => {
   try {
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = env.FINNHUB_TOKEN;
     if (!token) {
       // If no token, log and return empty to avoid throwing per requirements
       console.error('Error in stock search:', new Error('FINNHUB API key is not configured'));
