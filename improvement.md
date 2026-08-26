@@ -17,7 +17,8 @@ Address critical security vulnerabilities and fix anti-patterns that cause silen
 - **Error Handling (What is Missing / Areas for Improvement):** 
   - Stop swallowing exceptions in server actions (e.g., returning `[]` on API failures). Implement structured error responses (e.g., `{ success: false, error: string }`) and display toast notifications on the client.
   - **No Custom Error Classes:** The project currently throws standard `new Error('message')` instances. There is no centralized error class system (e.g., `class DatabaseError extends Error` or `class ValidationError`) to differentiate between types of failures programmatically.
-  - **No Global Error Boundary:** While Next.js App Router supports `error.tsx` files to catch unhandled runtime errors in UI components, the backend API and server actions rely mostly on localized `try...catch` blocks rather than a centralized error processing utility.
+  - **No Global Error Boundary:** While Next.js App Router supports `error.tsx` files to catch unhandled runtime errors in UI components, the backend API and server actions rely mostly on localized `try...catch` blocks rather than a centralized error processing utility. 
+  // not done as per 25 aug 2026
 - **Authorization Audit:** Ensure every single Server Action explicitly calls `requireSession()` and all database mutations enforce ownership (using `userId` in the query). Specifically, `getActiveAlerts` in `alert.actions.ts` is currently exposed as a public server action with no session guard; it must be moved to an internal helper.
 - **Environment Variables:** Replace any remaining `process.env` usages in the codebase with the centralized, typed `env` module from `lib/config/env.ts`.
 

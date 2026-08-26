@@ -151,15 +151,29 @@ export const checkPriceAlerts = inngest.createFunction(
 
         const alerts = result.data;
 
-        // Step 2: Check prices and send alerts
+        // Step 2: Fetch quotes for unique symbols only (deduplication)
+        // e.g. 10 alerts for [AAPL, AAPL, TSLA, MSFT, MSFT] → 3 API calls, not 10
+        const priceCache = await step.run('fetch-unique-prices', async () => {
+            const uniqueSymbols = [...new Set(alerts.map((a: any) => a.symbol as string))];
+
+            const entries = await Promise.all(
+                uniqueSymbols.map(async (symbol) => {
+                    const quote = await getQuote(symbol);
+                    return [symbol, quote?.c || 0] as [string, number];
+                })
+            );
+
+            return Object.fromEntries(entries) as Record<string, number>;
+        });
+
+        // Step 3: Evaluate alerts against the cached prices and send notifications
         const results = await step.run('check-and-send-alerts', async () => {
             const triggeredAlerts = [];
 
             for (const alert of alerts) {
                 try {
-                    // Get current price
-                    const quote = await getQuote(alert.symbol);
-                    const currentPrice = quote?.c || 0;
+                    // O(1) dictionary lookup — zero HTTP calls
+                    const currentPrice = priceCache[alert.symbol] ?? 0;
 
                     // Check if alert should trigger
                     let shouldTrigger = false;
@@ -220,6 +234,7 @@ export const checkPriceAlerts = inngest.createFunction(
 
             return triggeredAlerts;
         });
+
 
         return {
             success: true,
