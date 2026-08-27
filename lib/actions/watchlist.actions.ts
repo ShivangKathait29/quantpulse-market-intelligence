@@ -5,6 +5,7 @@ import Watchlist from "@/database/models/watchlist.model";
 import { requireSession } from "@/lib/better-auth/require-session";
 import { DatabaseError, toUserMessage } from "@/lib/errors";
 import { env } from "@/lib/config/env";
+import { getQuote, fetchJSON } from "./finnhub.actions";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
@@ -50,21 +51,18 @@ export async function getWatchlistWithDetails() {
     const stockDetails = await Promise.all(
       symbols.map(async (symbol) => {
         try {
-          const [quoteRes, profileRes] = await Promise.all([
-            fetch(`${FINNHUB_BASE_URL}/quote?symbol=${symbol}&token=${token}`, { next: { revalidate: 60 } }),
-            fetch(`${FINNHUB_BASE_URL}/stock/profile2?symbol=${symbol}&token=${token}`, { next: { revalidate: 3600 } })
+          const [quote, profile] = await Promise.all([
+            getQuote(symbol),
+            fetchJSON<any>(`${FINNHUB_BASE_URL}/stock/profile2?symbol=${symbol}&token=${token}`, 3600).catch(() => ({}))
           ]);
-
-          const quote = quoteRes.ok ? await quoteRes.json() : {};
-          const profile = profileRes.ok ? await profileRes.json() : {};
 
           return {
             symbol,
-            company: profile.name || symbol,
-            price: quote.c || 0,
-            change: quote.d || 0,
-            changePercent: quote.dp || 0,
-            marketCap: profile.marketCapitalization || 0,
+            company: profile?.name || symbol,
+            price: quote?.c || 0,
+            change: quote?.d || 0,
+            changePercent: quote?.dp || 0,
+            marketCap: profile?.marketCapitalization || 0,
             peRatio: 0, // Finnhub doesn't provide P/E in basic endpoints
           };
         } catch (error) {
