@@ -62,19 +62,33 @@ export const sendDailyNewsSummary = inngest.createFunction(
         // Step #2: For each user, get watchlist symbols -> fetch news (fallback to general)
         const results = await step.run('fetch-user-news', async () => {
             const perUser: Array<{ user: { id: string; email: string; name: string }; articles: MarketNewsArticle[] }> = [];
+            
+            const mongooseInstance = await connectToDatabase();
+            const db = mongooseInstance.connection.db; 
+            if (!db) throw new Error('DB not connected');
+
+            // 1. Fetch all users from DB in one go
+            const emails = users.map(u => u.email);
+            const dbUsers = await db.collection('user').find({ email: { $in: emails } }).toArray();
+            
+            // 2. Fetch all watchlists for these users in one go
+            const userIds = dbUsers.map(u => u._id.toString());
+            const allWatchlists = await Watchlist.find({ userId: { $in: userIds } }).select('userId symbol');
+
+            // 3. Build a map of userId -> symbols[]
+            const userSymbolsMap = new Map<string, string[]>();
+            for (const item of allWatchlists) {
+                const uid = item.userId.toString();
+                if (!userSymbolsMap.has(uid)) userSymbolsMap.set(uid, []);
+                userSymbolsMap.get(uid)!.push(item.symbol);
+            }
+
             for (const user of users) {
                 try {
-                    const mongooseInstance = await connectToDatabase();
-                    const db = mongooseInstance.connection.db; 
-                    if (!db) throw new Error('DB not connected');
+                    const dbUser = dbUsers.find(u => u.email === user.email);
+                    const userId = dbUser?._id?.toString();
                     
-                    const u = await db.collection('user').findOne({ email: user.email });
-                    let symbols: string[] = [];
-                    if (u) {
-                        const userId = u.id || u._id?.toString();
-                        const items = await Watchlist.find({ userId }).select('symbol');
-                        symbols = items.map((i: any) => i.symbol);
-                    }
+                    const symbols: string[] = userId ? (userSymbolsMap.get(userId) || []) : [];
                     
                     let articles = await getNews(symbols);
                     
