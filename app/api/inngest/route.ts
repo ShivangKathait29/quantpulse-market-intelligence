@@ -1,8 +1,12 @@
-import {serve} from "inngest/next";
-import {inngest} from "@/lib/inngest/client";
-import {sendDailyNewsSummary, sendSignUpEmail, checkPriceAlerts} from "@/lib/inngest/functions";
+import { serve } from "inngest/next";
+import { inngest } from "../../../inngest/client";
+import { dispatchDailyNews } from "../../../inngest/functions/dispatchNews";
+import { processUserNews } from "../../../inngest/functions/processUserNews";
 
 export const { GET, POST, PUT } = serve({
-    client: inngest,
-    functions: [sendSignUpEmail, sendDailyNewsSummary, checkPriceAlerts],
-})
+  client: inngest,
+  functions: [
+    dispatchDailyNews,
+    processUserNews
+  ],
+});
