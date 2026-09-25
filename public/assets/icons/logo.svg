@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="500" viewBox="0 0 1600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="500" fill="black"/>
+
+  <!-- Yellow Bars -->
+  <rect x="140" y="180" width="70" height="140" fill="#F4C430"/>
+  <rect x="230" y="120" width="70" height="200" fill="#F4C430"/>
+  <rect x="320" y="60" width="70" height="260" fill="#F4C430"/>
+
+  <!-- Green Arrow -->
+  <path d="M120 350 L240 230 L370 350 L520 200" 
+        stroke="#53F56C" stroke-width="28" fill="none" 
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="500,170 560,180 525,230" fill="#53F56C"/>
+
+  <!-- Blue Curve -->
+  <path d="M130 380 L240 290 L370 390 L520 280" 
+        stroke="#1DA1FF" stroke-width="28" fill="none" 
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 400 Q300 520 520 300" 
+        stroke="#1DA1FF" stroke-width="28" fill="none" 
+        stroke-linecap="round"/>
+
+  <!-- Text -->
+  <text x="640" y="315" 
+        font-family="Arial, Helvetica, sans-serif" 
+        font-size="150" 
+        fill="white"
+        font-weight="500"
+        letter-spacing="2">
+    quantpulse
+  </text>
+</svg>
