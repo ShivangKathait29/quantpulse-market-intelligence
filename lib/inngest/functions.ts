@@ -48,80 +48,85 @@ export const sendSignUpEmail = inngest.createFunction(
                 }
         })
 
-export const sendDailyNewsSummary = inngest.createFunction(
-    { id: 'daily-news-summary' },
+export const dispatchDailyNews = inngest.createFunction(
+    { id: 'dispatch-daily-news' },
     [{ event: 'app/send.daily.news' }, { cron: '0 12 * * *' }],
     async ({ step }) => {
-        // Step #1: Get all users for news delivery
         const users = await step.run('get-all-users', getAllUsersForNewsEmail);
 
         if (!users || users.length === 0) return { success: false, message: 'No users found for news email' };
 
-        // Step #2: For each user, get watchlist symbols -> fetch news (fallback to general)
-        const results = await step.run('fetch-user-news', async () => {
-            const perUser: Array<{ user: { id: string; email: string; name: string }; articles: MarketNewsArticle[] }> = [];
-            for (const user of users) {
-                try {
-                    const symbols = await getWatchlistSymbolsByEmail(user.email);
-                    let articles = await getNews(symbols);
-                    
-                    // Enforce max 6 articles per user
-                    articles = (articles || []).slice(0, 6);
-                    
-                    // If still empty, fallback to general
-                    if (!articles || articles.length === 0) {
-                        articles = await getNews();
-                        articles = (articles || []).slice(0, 6);
-                    }
-                    perUser.push({ user, articles });
-                } catch (e) {
-                    console.error('daily-news: error preparing user news', user.email, e);
-                    perUser.push({ user, articles: [] });
-                }
+        const events = users.map((user: any) => ({
+            name: "app/user.process_news" as const,
+            data: {
+                userId: user.id || user._id?.toString(),
+                email: user.email,
+                name: user.name
             }
-            return perUser;
+        }));
+
+        await step.sendEvent('fan-out-news', events);
+
+        return { success: true, message: `Dispatched ${events.length} user news events` };
+    }
+);
+
+export const processUserNews = inngest.createFunction(
+    { 
+        id: 'process-user-news',
+        concurrency: { limit: 5 },
+        retries: 3 
+    },
+    { event: 'app/user.process_news' },
+    async ({ event, step }) => {
+        const { email } = event.data;
+
+        const articles = await step.run('fetch-user-news', async () => {
+            let userArticles: any[] = [];
+            try {
+                const symbols = await getWatchlistSymbolsByEmail(email);
+                userArticles = await getNews(symbols);
+                userArticles = (userArticles || []).slice(0, 6);
+                
+                if (!userArticles || userArticles.length === 0) {
+                    userArticles = await getNews();
+                    userArticles = (userArticles || []).slice(0, 6);
+                }
+            } catch (e) {
+                console.error('Failed to get news for', email, e);
+            }
+            return userArticles;
         });
 
-        // Step #3: (placeholder) Summarize news via AI
-        const userNewsSummaries: { user: { id: string; email: string; name: string }; newsContent: string | null }[] = [];
-
-        for (const { user, articles } of results) {
-            try {
-                const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace('{{newsData}}', JSON.stringify(articles, null, 2));
-
-                const response = await step.ai.infer(`summarize-news-${user.email}`, {
-                    model: step.ai.models.gemini({ model: 'gemini-2.5-flash-lite' }),
-                    body: {
-                        contents: [{ role: 'user', parts: [{ text: prompt }]}]
-                    }
-                });
-
-                const part = response.candidates?.[0]?.content?.parts?.[0];
-                const newsContent = (part && 'text' in part ? part.text : null) || 'No market news.'
-
-                userNewsSummaries.push({ user, newsContent });
-            } catch (e) {
-                console.error('Failed to summarize news for : ', user.email, e);
-                userNewsSummaries.push({ user, newsContent: null });
-            }
+        if (!articles || articles.length === 0) {
+            return { success: false, reason: 'No articles found' };
         }
 
-        // Step #4: (placeholder) Send the emails
-        await step.run('send-news-emails', async () => {
-            await Promise.all(
-                userNewsSummaries.map(async ({ user, newsContent }) => {
-                    if (!newsContent) return false;
+        const newsContent = await step.run('summarize-news', async () => {
+            const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace('{{newsData}}', JSON.stringify(articles, null, 2));
 
-                    return await sendNewsSummaryEmail({ 
-                      email: user.email, 
-                      date: getFormattedTodayDate(), 
-                      newsContent 
-                    });
-                })
-            );
+            const response = await step.ai.infer(`summarize-news-${email}`, {
+                model: step.ai.models.gemini({ model: 'gemini-2.5-flash-lite' }),
+                body: {
+                    contents: [{ role: 'user', parts: [{ text: prompt }]}]
+                }
+            });
+
+            const part = response.candidates?.[0]?.content?.parts?.[0];
+            return (part && 'text' in part ? part.text : null) || 'No market news.'
         });
 
-        return { success: true, message: 'Daily news summary emails sent successfully' };
+        if (!newsContent) return { success: false, reason: 'AI summarization failed' };
+
+        await step.run('send-news-email', async () => {
+            await sendNewsSummaryEmail({ 
+                email, 
+                date: getFormattedTodayDate(), 
+                newsContent 
+            });
+        });
+
+        return { success: true, email };
     }
 );
 
