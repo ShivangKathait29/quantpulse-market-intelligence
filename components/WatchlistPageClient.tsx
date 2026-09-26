@@ -221,7 +221,7 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
                     {alerts.length === 0 ? (
                         <div className="text-center py-12 text-gray-500">
                             <p className="mb-2">No alerts yet</p>
-                            <p className="text-sm">Click "Add Alert" on any stock to get started</p>
+                            <p className="text-sm">Click &quot;Add Alert&quot; on any stock to get started</p>
                         </div>
                     ) : (
                         <div className="space-y-4">

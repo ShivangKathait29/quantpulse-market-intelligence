@@ -13,7 +13,7 @@ type Events = {
     };
   };
   "app/send.daily.news": {
-     data: any;
+     data: Record<string, unknown>;
   };
   "app/user.process_news": {
     data: {

@@ -8,6 +8,7 @@ import {getFormattedTodayDate} from "@/lib/utils";
 import {getActiveAlerts} from "@/lib/actions/alert.actions";
 import {PRICE_ALERT_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 import PriceAlert from "@/database/models/alert.model";
+import {getCachedAISummary, setCachedAISummary} from "@/lib/cache/ai-cache";
 
 export const sendSignUpEmail = inngest.createFunction(
     { id: 'sign-up-email' },
@@ -56,6 +57,7 @@ export const dispatchDailyNews = inngest.createFunction(
 
         if (!users || users.length === 0) return { success: false, message: 'No users found for news email' };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const events = users.map((user: any) => ({
             name: "app/user.process_news" as const,
             data: {
@@ -81,10 +83,14 @@ export const processUserNews = inngest.createFunction(
     async ({ event, step }) => {
         const { email } = event.data;
 
+        // Note: Extract symbols at the top level so we can use them for the cache key
+        const symbols = await step.run('get-user-symbols', async () => {
+            return await getWatchlistSymbolsByEmail(email);
+        });
+
         const articles = await step.run('fetch-user-news', async () => {
-            let userArticles: any[] = [];
+            let userArticles: MarketNewsArticle[] = [];
             try {
-                const symbols = await getWatchlistSymbolsByEmail(email);
                 userArticles = await getNews(symbols);
                 userArticles = (userArticles || []).slice(0, 6);
                 
@@ -103,6 +109,11 @@ export const processUserNews = inngest.createFunction(
         }
 
         const newsContent = await step.run('summarize-news', async () => {
+            // Phase 4 fix: AI Response Caching
+            // If another user had this exact watchlist today, skip Gemini and use Redis.
+            const cached = await getCachedAISummary(symbols);
+            if (cached) return cached;
+
             const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace('{{newsData}}', JSON.stringify(articles, null, 2));
 
             const response = await step.ai.infer(`summarize-news-${email}`, {
@@ -113,7 +124,12 @@ export const processUserNews = inngest.createFunction(
             });
 
             const part = response.candidates?.[0]?.content?.parts?.[0];
-            return (part && 'text' in part ? part.text : null) || 'No market news.'
+            const summary = (part && 'text' in part ? part.text : null) || 'No market news.';
+
+            // Store in Redis for the next user with these symbols
+            await setCachedAISummary(symbols, summary);
+
+            return summary;
         });
 
         if (!newsContent) return { success: false, reason: 'AI summarization failed' };

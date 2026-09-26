@@ -16,12 +16,8 @@ const WatchlistButton = ({
                              onWatchlistChange,
                          }: WatchlistButtonProps) => {
     const [added, setAdded] = useState<boolean>(!!isInWatchlist);
-    const [isPending, startTransition] = useTransition();
+    const [, startTransition] = useTransition();
     const router = useRouter();
-
-    useEffect(() => {
-        setAdded(!!isInWatchlist);
-    }, [isInWatchlist]);
 
     const label = useMemo(() => {
         if (type === "icon") return added ? "" : "";

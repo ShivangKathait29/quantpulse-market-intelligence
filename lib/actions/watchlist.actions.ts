@@ -2,6 +2,8 @@
 
 import { connectToDatabase } from "@/database/mongoose";
 import Watchlist from "@/database/models/watchlist.model";
+import { getCachedQuote } from "@/lib/cache/stock-cache";
+import { fetchJSON } from "@/lib/actions/finnhub.actions";
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 
@@ -33,36 +35,35 @@ export async function getWatchlistSymbolsByEmail(email: string): Promise<string[
 export async function getWatchlistWithDetails(email: string): Promise<WatchlistStockDetails[]> {
   try {
     const symbols = await getWatchlistSymbolsByEmail(email);
-    
+
     if (symbols.length === 0) {
       return [];
     }
 
-    const token = process.env.FINNHUB_API_KEY ?? process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
-    if (!token) {
-      console.error('FINNHUB API key not configured');
-      return [];
-    }
+    const token = process.env.FINNHUB_API_KEY ?? process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
 
-    // Fetch quote and profile data for each symbol
+    // Phase 4 fix: use getCachedQuote() (Redis → Finnhub) instead of raw fetch().
+    // Popular stocks will always be a Redis cache hit thanks to the warm-cache cron.
+    // Profile data uses fetchJSON() with a 1h TTL via the Next.js fetch cache.
     const stockDetails = await Promise.all(
       symbols.map(async (symbol) => {
         try {
-          const [quoteRes, profileRes] = await Promise.all([
-            fetch(`${FINNHUB_BASE_URL}/quote?symbol=${symbol}&token=${token}`, { next: { revalidate: 60 } }),
-            fetch(`${FINNHUB_BASE_URL}/stock/profile2?symbol=${symbol}&token=${token}`, { next: { revalidate: 3600 } })
+          const [quote, profile] = await Promise.all([
+            getCachedQuote(symbol),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            fetchJSON<any>(
+              `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(symbol)}&token=${token}`,
+              3600 // 1 hour TTL — company profiles rarely change
+            ).catch(() => null),
           ]);
-
-          const quote = quoteRes.ok ? await quoteRes.json() : {};
-          const profile = profileRes.ok ? await profileRes.json() : {};
 
           return {
             symbol,
-            company: profile.name || symbol,
-            price: quote.c || 0,
-            change: quote.d || 0,
-            changePercent: quote.dp || 0,
-            marketCap: profile.marketCapitalization || 0,
+            company: profile?.name || symbol,
+            price: quote?.c ?? 0,
+            change: quote?.d ?? 0,
+            changePercent: quote?.dp ?? 0,
+            marketCap: profile?.marketCapitalization ?? 0,
             peRatio: 0, // Finnhub doesn't provide P/E in basic endpoints
           };
         } catch (error) {

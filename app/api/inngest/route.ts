@@ -5,12 +5,14 @@ import {
     dispatchDailyNews, processUserNews, 
     checkPriceAlerts 
 } from "@/lib/inngest/functions";
+import { warmPopularStocks } from "@/lib/inngest/warm-cache";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [
     sendSignUpEmail,
     dispatchDailyNews, processUserNews,
-    checkPriceAlerts
+    checkPriceAlerts,
+    warmPopularStocks,
   ],
 });

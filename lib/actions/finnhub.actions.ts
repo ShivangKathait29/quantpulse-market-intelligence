@@ -134,10 +134,13 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
             try {
               const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(sym)}&token=${token}`;
               // Revalidate every hour
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const profile = await fetchJSON<any>(url, 3600);
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               return { sym, profile } as { sym: string; profile: any };
             } catch (e) {
               console.error('Error fetching profile2 for', sym, e);
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               return { sym, profile: null } as { sym: string; profile: any };
             }
           })
@@ -158,6 +161,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
             // We don't include exchange in FinnhubSearchResult type, so carry via mapping later using profile
             // To keep pipeline simple, attach exchange via closure map stage
             // We'll reconstruct exchange when mapping to final type
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (r as any).__exchange = exchange; // internal only
             return r;
           })
@@ -172,7 +176,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
         .map((r) => {
           const upper = (r.symbol || '').toUpperCase();
           const name = r.description || upper;
-          const exchangeFromDisplay = (r.displaySymbol as string | undefined) || undefined;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const exchangeFromProfile = (r as any).__exchange as string | undefined;
           const exchange = exchangeFromProfile || 'US';          const type = r.type || 'Stock';
           const item: StockWithWatchlistStatus = {

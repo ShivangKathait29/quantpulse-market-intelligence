@@ -10,7 +10,7 @@ export default function NotFound() {
       </div>
       <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
       <p className="text-gray-400 max-w-md mx-auto mb-8">
-        We couldn't find the page you're looking for. The stock symbol may be invalid, or the page may have been moved.
+        We couldn&apos;t find the page you&apos;re looking for. The stock symbol may be invalid, or the page may have been moved.
       </p>
       <Link href="/">
         <Button className="bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-semibold px-8 py-2">

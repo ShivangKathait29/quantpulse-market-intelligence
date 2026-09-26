@@ -19,9 +19,9 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
         }
 
         return { success: true, data: response }
-    } catch (e: any) {
+    } catch (e: unknown) {
         console.log('Sign up failed', e)
-        return { success: false, error: e?.message || 'Sign up failed' }
+        return { success: false, error: e instanceof Error ? e.message : 'Sign up failed' }
     }
 }
 
@@ -32,9 +32,9 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
             headers: await headers()
         })
         return { success: true, data: response }
-    } catch (e: any) {
+    } catch (e: unknown) {
         console.log('Sign in failed', e)
-        return { success: false, error: e?.message || 'Sign in failed' }
+        return { success: false, error: e instanceof Error ? e.message : 'Sign in failed' }
     }
 }
 
@@ -42,8 +42,8 @@ export const signOut = async () => {
     try {
         await auth.api.signOut({ headers: await headers() });
         return { success: true }
-    } catch (e: any) {
+    } catch (e: unknown) {
         console.log('Sign out failed', e)
-        return { success: false, error: e?.message || 'Sign out failed' }
+        return { success: false, error: e instanceof Error ? e.message : 'Sign out failed' }
     }
 }
