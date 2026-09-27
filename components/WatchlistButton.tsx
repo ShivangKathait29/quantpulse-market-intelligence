@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState, useTransition } from "react";
+import React, { useMemo, useState, useTransition } from "react";
 import { toggleWatchlist } from "@/lib/actions/watchlist.actions";
 import { useRouter } from "next/navigation";
 // Minimal WatchlistButton implementation to satisfy page requirements.

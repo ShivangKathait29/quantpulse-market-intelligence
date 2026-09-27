@@ -1,6 +1,5 @@
 import { connectToDatabase } from "@/database/mongoose";
 import Alert from "@/database/models/alert.model";
-import { DatabaseError } from "@/lib/errors";
 
 export async function getActiveAlerts() {
   try {

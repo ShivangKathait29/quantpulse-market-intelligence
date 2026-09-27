@@ -16,7 +16,6 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   const [stocks, setStocks] = useState<StockWithWatchlistStatus[]>(initialStocks);
 
   const isSearchMode = !!searchTerm.trim();
-  const displayStocks = isSearchMode ? stocks : stocks?.slice(0, 10);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -29,43 +28,28 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [])
 
-  const handleSearch = async () => {
-    if(!isSearchMode) return setStocks(initialStocks);
 
-    setLoading(true)
-    try {
-      const results = await searchStocks(searchTerm.trim());
-      setStocks(results);
-    } catch {
-      setStocks([])
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  // const debouncedSearch = useDebounce(handleSearch, 300);
-  //
-  // useEffect(() => {
-  //   debouncedSearch();
-  // }, [searchTerm]);
-
-
-
-// Then in SearchCommand:
   const debouncedSearchTerm = useDebouncedValue(searchTerm, 300);
+  // Derive display list directly — avoids calling setState in effect body
+  const displayStocks = debouncedSearchTerm.trim() ? stocks : initialStocks?.slice(0, 10);
 
   useEffect(() => {
-    if (!debouncedSearchTerm.trim()) {
-      setStocks(initialStocks);
-      return;
-    }
+    if (!debouncedSearchTerm.trim()) return;
 
-    setLoading(true);
-    searchStocks(debouncedSearchTerm.trim())
-        .then(setStocks)
-        .catch(() => setStocks([]))
-        .finally(() => setLoading(false));
-  }, [debouncedSearchTerm, initialStocks]);
+    const run = async () => {
+      setLoading(true);
+      try {
+        const results = await searchStocks(debouncedSearchTerm.trim());
+        setStocks(results);
+      } catch {
+        setStocks([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    run();
+  }, [debouncedSearchTerm]);
+
 
   const handleSelectStock = () => {
     setOpen(false);
@@ -102,7 +86,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
                     {isSearchMode ? 'Search results' : 'Popular stocks'}
                     {` `}({displayStocks?.length || 0})
                   </div>
-                  {displayStocks?.map((stock, i) => (
+                  {displayStocks?.map((stock) => (
                       <li key={stock.symbol} className="search-item">
                         <Link
                             href={`/symbol/${stock.symbol}`}

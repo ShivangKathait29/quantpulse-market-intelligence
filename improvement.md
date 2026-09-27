@@ -343,3 +343,7 @@ Implement standout features that demonstrate deep system design knowledge.
 - **Server-Side Hydration for Alerts:** `getUserAlerts` currently returns a dummy `currentPrice: 0` and relies on the client to fetch the real price. Hydrate the price server-side using `getQuote()` alongside the DB query to avoid the client-side N+1 fetching anti-pattern.
 - **Alert History / Audit Log:** Right now, triggered alerts only update the `lastTriggered` timestamp. Add an `AlertHistory` model to store every trigger event (timestamp, price at trigger, etc.) to power a "History" tab in the UI.
 - **Percentage Change Alerts:** Alerts only support absolute price boundaries (`upper`/`lower`). Add a `percentChange` alert type (e.g., "notify me if AAPL moves ±5% in a day") utilizing Finnhub's `quote.dp` field.
+
+
+## Phase 11
+**Login in problem** : it stated logged in even after closing the browser, it should be logged out after a specific time period, we can use session cookie for that.

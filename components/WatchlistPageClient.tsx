@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -41,18 +41,18 @@ export default function WatchlistPageClient({ stocks, userEmail, initialStocks, 
     const [alerts, setAlerts] = useState<AlertItem[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        loadAlerts();
-    }, []);
-
-    const loadAlerts = async () => {
+    const loadAlerts = useCallback(async () => {
         try {
             const userAlerts = await getUserAlerts(userEmail);
             setAlerts(userAlerts as AlertItem[]);
         } catch (error) {
             console.error('Failed to load alerts:', error);
         }
-    };
+    }, [userEmail]);
+
+    useEffect(() => {
+        loadAlerts();
+    }, [loadAlerts]);
 
     const formatPrice = (price: number) => `$${price.toFixed(2)}`;
     const formatMarketCap = (cap: number) => {
