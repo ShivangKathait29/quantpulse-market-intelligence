@@ -346,4 +346,30 @@ Implement standout features that demonstrate deep system design knowledge.
 
 
 ## Phase 11
-**Login in problem** : it stated logged in even after closing the browser, it should be logged out after a specific time period, we can use session cookie for that.
+**Auth Session Configuration** ✅ : Added explicit `session` config to `lib/better-auth/auth.ts` for intentional persistent-login SaaS behavior. Session expires after **7 days** server-side (MongoDB TTL) with a **24h rolling update** — so active users never get unexpectedly logged out, but inactive sessions naturally expire. `nextCookies()` plugin handles `HttpOnly`, `Secure` (production only), and `SameSite=Lax` cookie attributes automatically. Explicit logout revokes the MongoDB session record immediately, making the cookie useless.
+
+**Test checklist:**
+- [ ] Login → close browser → reopen → still logged in ✅ (persistent cookie)
+- [ ] Logout → reopen → redirected to `/sign-in` ✅ (session revoked in DB)
+- [ ] Delete session document in MongoDB → next request fails auth ✅ (server-side check)
+- [ ] Wait 7 days without activity → session expires → redirected to `/sign-in` ✅
+
+
+**Three improvements before adding performance claims
+Priority 1
+
+Verify the integrations
+
+Confirm that your rate-limiting middleware actually executes on API requests, getCachedQuote() is called by your application, and the Inngest cron is registered and running.
+
+Priority 2
+
+Fix cache expiration gaps
+
+Your pre-warmer runs every 60 seconds and sets a 60-second TTL. Scheduling delays can cause keys to expire before the next refresh. Consider a slightly longer TTL with an explicit freshness policy.
+
+Priority 3
+
+Benchmark your implementation
+
+Measure Redis cache hit rate, cached versus uncached quote latency, Finnhub API calls saved, and rate-limit behavior under concurrent requests.**
