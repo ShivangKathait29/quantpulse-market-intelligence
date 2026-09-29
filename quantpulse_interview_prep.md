@@ -1283,3 +1283,18 @@ Added robust fallbacks to the Next.js `app/` router to ensure the application ha
 ## Verification
 
 The entire system passed a strict `npm run build`, ensuring zero type errors or missing dependencies across the client components, server actions, and background jobs. The application is now fully prepared for a robust production deployment.
+
+
+## Interview points
+• Built a full-stack market intelligence platform using Next.js, TypeScript,
+  MongoDB, Upstash Redis, Inngest, and Gemini, supporting stock watchlists,
+  market news, and price alerts.
+
+• Implemented distributed Redis cache-aside caching and fixed-window API
+  rate limiting, with 60-second quote TTLs and scheduled pre-warming of
+  15 popular symbols to reduce repeated external API requests.
+
+• Designed an Inngest fan-out pipeline for personalized daily news,
+  processing users independently with concurrency control and automatic
+  retries; added deterministic Redis caching to deduplicate Gemini requests
+  for identical watchlists.
